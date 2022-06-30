@@ -16,7 +16,7 @@ import Prescriptions from "./components/Prescriptions/Prescriptions";
 import CreateSlot from "./components/Clinicscreen/CreateSlot";
 import CreateAppointment from "./components/CreateAppointment/CreateAppointment";
 import AppointmentListForm from "./components/AppointmentListForm/AppointmentListForm";
-
+// APP JS
 function App() {
   return (
     <AuthProvider>
