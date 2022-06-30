@@ -1,0 +1,82 @@
+.clinic_box {
+  margin: 20px 50px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  max-width: 800px;
+}
+.clinic_box_header {
+  display: flex;
+  justify-content: space-between;
+}
+.clinic_box_header h1 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27px;
+  color: #000000;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+.clinic_box_header p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #7d818b;
+  margin-bottom: 5px;
+}
+.clinic_box_header h6 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #7d818b;
+}
+.clinic_box_details {
+  display: flex;
+  margin: 20px 0;
+}
+.clinic_box_detail_col_1 {
+  margin-right: 150px;
+}
+.clinic_box_details h5 {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 22px;
+  color: #b7b7b7;
+}
+.clinic_box_details p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #232526;
+  margin-bottom: 20px;
+}
+.clinic_box_details h4 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #194af5;
+}
+.address {
+  max-width: 300px;
+}
+.details_view_cta {
+  background: #e6ebff;
+  border-radius: 4px;
+  border: none;
+  width: 200px;
+  padding: 10px 0;
+  color: #194af5;
+  font-weight: 500;
+}
+.ui-datepicker-clear-month {
+  position: absolute;
+  top: 9px;
+  right: 32px;
+  height: 100%;
+  line-height: 100%;
+  display: inline;
+  cursor: pointer;
+  color: red !important;
+}

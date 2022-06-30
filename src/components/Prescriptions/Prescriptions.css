@@ -1,0 +1,165 @@
+.prescription_outlet {
+  position: absolute;
+  left: 16vw;
+  top: 80px;
+  background: #f6f6f7;
+  height: 100vh;
+  width: 84vw;
+  overflow: scroll;
+}
+.prescription_content label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #000000;
+}
+.prescription_container {
+  padding: 50px;
+}
+.prescription_content {
+  margin-bottom: 30px;
+}
+.prescription_textarea {
+  border-radius: 8px;
+  border: none;
+  padding: 20px;
+}
+.prescription_textarea:focus {
+  outline: 1px solid #194af5;
+}
+.prescription_input {
+  display: block;
+  width: 95%;
+  padding: 20px;
+  margin-bottom: 20px;
+  background: #fdfdff;
+  border-radius: 4px;
+  border: none;
+}
+.prescription_input:focus {
+  outline: 1px solid #194af5;
+}
+.prescription_input::placeholder {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 31px;
+  color: #b7b7b7;
+}
+
+.point-table-head {
+  background: rgba(238, 242, 255, 0.72);
+}
+.table_prescription {
+  width: 95%;
+  border-radius: 4px;
+  border: 1px solid #d6d6d6;
+  background-color: #fff;
+}
+.table_prescription thead tr th {
+  padding: 20px;
+  border: 1px solid #d6d6d6;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #505050;
+}
+
+.table_prescription tr td {
+  padding: 15px 20px;
+  border: 1px solid #d6d6d6;
+}
+.prescription_table_input {
+  border: none;
+  width: 100%;
+}
+.prescription_table_input:focus {
+  outline: none;
+}
+.prescription_table_input::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  color: #b7b7b7;
+  text-align: center;
+}
+.small_box {
+  max-width: 100px;
+}
+.prescription_date_input {
+  border-radius: 8px;
+  border: none;
+  padding: 10px;
+  width: 30%;
+}
+input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+  -webkit-appearance: none;
+}
+.addrow_btn {
+  background-color: #194af5;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-top: 20px;
+  margin-right: 60px;
+  font-size: 14px;
+}
+.addtest_btn {
+  background-color: #194af5;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-right: 60px;
+  font-size: 14px;
+}
+.save_btn {
+  background: #e6ebff;
+  border-radius: 4px;
+  border: none;
+  padding: 8px 20px;
+  margin-right: 20px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #194af5;
+}
+.submit_btn {
+  background: #194af5;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  padding: 8px 30px;
+  margin-right: 20px;
+}
+.submit_btn:disabled {
+  background: #fff;
+  color: #000;
+  cursor: no-drop;
+}
+.save_btn:disabled {
+  background: #fff;
+  color: #000;
+  cursor: no-drop;
+}
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+  background-color: #fff !important;
+  border: none !important;
+  outline: none !important;
+}
+.css-1u3bzj6-MuiFormControl-root-MuiTextField-root {
+  border: none !important;
+  outline: none !important;
+}
+.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input {
+  border: none !important;
+  outline: none !important;
+}
+.enter_icon {
+  margin-left: 5px;
+}
+.enter_icon path {
+  fill: #fff;
+  /* color: #fff; */
+}

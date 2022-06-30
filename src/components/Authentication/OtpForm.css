@@ -1,0 +1,32 @@
+.verify_otp {
+  width: 48px;
+  margin-right: 10px;
+  padding-left: 12px;
+  height: 40px;
+  background: transparent;
+  border-radius: 2px;
+  border: none;
+  border-bottom: 2px solid #b7b7b7;
+}
+.verify_otp:focus {
+  outline: none;
+}
+.otp_login_sub_heading {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 27px;
+  letter-spacing: 0.04em;
+  color: #b7b7b7;
+  margin-bottom: 20px;
+}
+.otp_box {
+  margin-bottom: 20px;
+}
+.change_num {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 29px;
+  letter-spacing: 0.04em;
+  color: #194af5;
+}

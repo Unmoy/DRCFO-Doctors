@@ -1,0 +1,151 @@
+.createappointment_form {
+  padding: 40px 30px;
+  background: linear-gradient(
+    46.91deg,
+    #eef7ff 8.85%,
+    rgba(238, 247, 255, 0) 66.72%,
+    rgba(238, 247, 255, 0) 88.22%
+  );
+}
+.myappointment--textbox {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  margin-bottom: 3em;
+  margin-left: 7em;
+}
+.home_link {
+  text-decoration: none;
+  color: #000;
+}
+.myappointment--backarrow {
+  margin-right: 1em;
+}
+.myappointment--backarrow path {
+  fill: #000;
+}
+.myappointment--textbox:hover .myappointment--backarrow path {
+  fill: #194af5;
+}
+
+.createappointment_form h1 {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 39px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #000000;
+}
+.createappointment_form p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.04em;
+  color: #b7b7b7;
+  text-align: center;
+}
+.createappointment_box {
+  padding: 20px;
+  width: 450px;
+}
+.createappointment_box label {
+  display: block;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.createappointment_input {
+  padding: 7px 10px;
+  border: 1px solid #a4a4a4;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  color: #232526;
+}
+.createappointment_input:focus {
+  outline: 1px solid #194af5;
+}
+.gender_box {
+  margin-bottom: 15px;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+}
+.gender_box .checkbox-tools:checked,
+.checkbox-tools:not(:checked) {
+  position: absolute;
+  left: -9999px;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.checkbox-tools:checked + label,
+.checkbox-tools:not(:checked) + label {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  width: 120px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 1px;
+  margin: 0 auto;
+  margin-left: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  text-transform: uppercase;
+  -webkit-transition: all 300ms linear;
+  transition: all 300ms linear;
+}
+.checkbox-tools:not(:checked) + label {
+  border: 1px solid #c4c4c4;
+}
+.checkbox-tools:checked + label {
+  background-color: #194af5;
+  color: #fff;
+  border: 1px solid #194af5;
+}
+.checkbox-tools:not(:checked) + label:hover {
+  background-color: #194af5;
+  color: #fff;
+}
+.checkbox-tools:checked + label::before,
+.checkbox-tools:not(:checked) + label::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  z-index: -1;
+}
+.css-1ptx2yq-MuiInputBase-root-MuiInput-root {
+  /* border: 1px solid red !important; */
+  width: 410px !important;
+  padding: 0 10px !important;
+}
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  padding: 10px 0 !important;
+  text-indent: 0 !important;
+}
+.material_input {
+  margin-bottom: 30px;
+}
+.custom_select {
+  width: 410px;
+  padding: 10px 5px;
+  border-radius: 4px;
+}
+.createappointment_input::placeholder {
+  font-size: 15px;
+}

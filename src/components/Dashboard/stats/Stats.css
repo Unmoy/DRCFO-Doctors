@@ -1,0 +1,96 @@
+.stats--container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1em;
+  grid-template-rows: max-content;
+  margin: 0 3em;
+}
+
+.stat--card {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  height: 140px;
+  transition: all 200ms ease-in;
+  cursor: pointer;
+}
+
+.stat--card:hover {
+  transform: scale(1.02) translateY(-1px);
+}
+
+.stat--icon--div {
+  height: 3.5em;
+  width: 3.5em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.stat--icon {
+  height: 1.8em;
+  width: 1.8em;
+  margin: auto;
+  display: block;
+}
+
+.stat--text {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.stat--heading {
+  display: block;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1em;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-shadow: 0px 1px 5px rgba(255, 255, 255, 0.25);
+}
+
+.stat--value {
+  display: block;
+  font-weight: 600;
+  font-size: 1.8em;
+  line-height: 1.8em;
+  color: #ffffff;
+  text-shadow: 0px 1px 5px rgba(255, 255, 255, 0.25);
+}
+
+.card--1 {
+  background: url("../../../assets/images/background/background-1.png");
+}
+
+.card--2 {
+  background: url("../../../assets/images/background/background-2.png");
+}
+
+.card--3 {
+  background: url("../../../assets/images/background/background-3.png");
+}
+
+.card--4 {
+  background: url("../../../assets/images/background/background-4.png");
+}
+
+.icon--1 {
+  background: #a5a6f4;
+}
+
+.icon--2 {
+  background: #71d4a2;
+}
+
+.icon--3 {
+  background: #a3d7e1;
+}
+
+.icon--4 {
+  background: #e9a1c0;
+}

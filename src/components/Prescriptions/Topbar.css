@@ -1,0 +1,139 @@
+.NavbarItems {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ecf6ff;
+  height: 80px;
+  padding: 0 50px;
+}
+.topbar_header {
+}
+.topbar_header img {
+  width: 20px;
+  margin-right: 10px;
+  margin-bottom: 2px;
+}
+.NavbarItems h1 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 29px;
+  color: #194af5;
+  margin-bottom: 0;
+}
+.route_link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 29px;
+  color: #232526;
+}
+.route_link:hover {
+  color: #000;
+}
+.template_container {
+  cursor: pointer;
+  padding: 20px 0;
+}
+.template_dropdown {
+  display: none;
+}
+
+.template_dropdown_container:hover .template_dropdown {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  margin-top: 15px;
+  background: #ffffff;
+  box-shadow: -4px 4px 25px rgba(0, 0, 0, 0.08);
+  width: 300px;
+  padding: 20px;
+  z-index: 99;
+}
+.template_list {
+  border-bottom: 1px solid #e6ebed;
+}
+.template_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.template_item h5 {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 21px;
+  color: #232526;
+  margin-bottom: 2px;
+  text-transform: capitalize;
+}
+.template_use_btn {
+  font-weight: 500;
+  padding: 2px 10px;
+  font-size: 14px;
+  line-height: 22px;
+  color: #194af5;
+  background: #e6ebff;
+  border-radius: 2px;
+  border: none;
+}
+.template_use_btn2 {
+  font-weight: 500;
+  padding: 2px 10px;
+  font-size: 14px;
+  line-height: 22px;
+  color: #fff;
+  background: #194af5;
+  border-radius: 2px;
+  border: none;
+}
+.template_dropdown h6 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #232526;
+  margin-bottom: 2px;
+}
+.template_dropdown p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19px;
+  color: #8b8282;
+  margin-bottom: 30px;
+}
+.template_dropdown h2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #232526;
+  margin: 20px 0;
+}
+.template_search {
+  padding: 7px;
+  border: none;
+  padding-left: 50px;
+  margin-bottom: 30px;
+  width: 100%;
+  background: #fffbfb;
+  border-radius: 14px;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: #232526;
+}
+.template_search::placeholder {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 19px;
+  color: #b7b7b7;
+}
+.template_search:focus {
+  outline: none;
+}
+.template_icon_clinic {
+  position: absolute;
+  width: 20px;
+  margin-left: 15px;
+  margin-top: 10px;
+}

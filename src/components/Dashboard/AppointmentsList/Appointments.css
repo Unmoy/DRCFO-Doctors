@@ -1,0 +1,145 @@
+.appointments--container {
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.appointments--header {
+  padding: 20px;
+  border-bottom: 1px solid #e6ebed;
+}
+
+.appointments--title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.appointments--viewall {
+  color: #194af5;
+  font-weight: 500;
+  font-size: 0.8em;
+  line-height: 1.2em;
+  float: right;
+  margin: 6px 8px;
+  cursor: pointer;
+}
+.appointment--card--gender,
+.appointment--card--age {
+  font-size: 14px;
+}
+.appointments--body {
+  padding: 0 1em;
+}
+
+.appointment--card {
+  width: 100%;
+  margin: 20px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.appointment--card--profile {
+  font-weight: 500;
+  font-size: 14px;
+  color: #5a6472;
+  background: #e6ebff;
+  border: 1px solid #f8f8f8;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.appointment--card--detials {
+  display: table-cell;
+  font-weight: 400;
+  font-size: 14px;
+  color: #a9abad;
+}
+
+.appointment--card--time {
+  padding-left: 1em;
+  /* display: table-cell; */
+  font-weight: 400;
+  font-size: 14px;
+  /* line-height: 22px; */
+  color: #5a6472;
+  margin: 0 30px;
+}
+
+.appointment--card--name {
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #232526;
+  margin-bottom: 5px;
+  /* min-width: 10em; */
+  inline-size: 12em;
+  overflow-wrap: break-word;
+}
+/* .appointment--card--name2 {
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 22px;
+  color: #232526;
+  margin-bottom: 5px;
+  min-width: 8em;
+  word-break: break-all;
+  overflow-wrap: break-word;
+} */
+
+.appointment--card--location {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 15px;
+  color: #5a6472;
+  background: rgba(146, 219, 149, 0.21);
+  border-radius: 2em;
+  padding: 5px 10px;
+}
+.appointment--card--location_walkin {
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 15px;
+  color: #5a6472;
+  background: #e6ebff;
+  border-radius: 2em;
+  padding: 5px 10px;
+}
+.appointments--card--buttons {
+  display: table-cell;
+  vertical-align: top;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #f8f8f8;
+}
+
+.appointments--card-button--group {
+  float: right;
+}
+
+.appointments--card--button {
+  border-radius: 4px;
+  padding: 6px 20px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #ffffff;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.accept {
+  background: #194af5;
+  color: #f8f8f8;
+}

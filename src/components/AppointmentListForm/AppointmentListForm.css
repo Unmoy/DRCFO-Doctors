@@ -1,0 +1,49 @@
+.appointment_table {
+  border-collapse: collapse;
+  width: 80%;
+  margin: auto;
+}
+
+.appointment_table td,
+.appointment_table th {
+  border: 1px solid #ddd;
+  padding: 13px;
+  font-size: 14px;
+}
+
+.appointment_table tr:nth-child(even) {
+  background-color: #e6ebff;
+}
+
+.appointment_table tr:hover {
+  background-color: #e6ebff;
+}
+
+.appointment_table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #e6ebff;
+  color: #194af5;
+}
+.name_row {
+  width: 12em;
+}
+.serial_row {
+  font-size: 15px;
+}
+.date_row {
+  width: 10em;
+}
+.receipt_row {
+  width: 10em;
+}
+.dropdown-item {
+  cursor: pointer !important;
+}
+.export_btn {
+  background: #194af5 !important;
+}
+.export_dropdown {
+  margin-right: 5em;
+}

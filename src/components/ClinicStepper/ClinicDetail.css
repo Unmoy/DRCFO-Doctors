@@ -1,0 +1,82 @@
+.clinic_detail_form {
+  padding: 40px 0;
+}
+.clinic_detail_form h1 {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 39px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #000000;
+}
+.clinic_screen p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.04em;
+  color: #b7b7b7;
+  text-align: center;
+}
+.clinic_detail_form label {
+  display: block;
+  font-weight: 450;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #000;
+  margin-bottom: 10px;
+}
+.clinic_detail_box {
+  padding: 20px;
+  width: 450px;
+}
+.clinic_input {
+  padding: 7px;
+  border: 1px solid #a4a4a4;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #232526;
+}
+.pincode_input {
+  padding: 7px;
+  border: 1px solid #a4a4a4;
+  border-radius: 4px;
+  margin-bottom: 30px;
+  width: 60%;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #232526;
+}
+.location_button {
+  background: #e6ebed;
+  border-radius: 4px;
+  border: none;
+  margin-bottom: 30px;
+  padding: 8px 10px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #194af5;
+}
+.location_button img {
+  width: 20px;
+  margin-right: 5px;
+}
+.clinic_input:focus {
+  outline: 1px solid #194af5;
+}
+.clinic_input::placeholder {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #7d818b;
+}

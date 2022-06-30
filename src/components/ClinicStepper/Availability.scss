@@ -1,0 +1,185 @@
+.availability_form {
+  padding: 40px 0;
+}
+.availability_form h1 {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 39px;
+  letter-spacing: 0.04em;
+  color: #000000;
+  text-align: center;
+}
+.availability_form p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.04em;
+  color: #b7b7b7;
+  text-align: center;
+}
+.daytime_label {
+  display: inline-block;
+  padding: 10px;
+  position: relative;
+  text-align: center;
+  transition: background 500ms ease, color 500ms ease;
+}
+.availability_box {
+  padding: 20px 0;
+}
+.availability_form h4 {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  color: #232526;
+  padding: 0 290px;
+}
+.timefrom {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: #232526;
+  margin-bottom: 5px;
+}
+.without_ampm {
+  padding: 7px 12px;
+  background: #ffffff;
+  border: 1px solid #a4a4a4;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  color: #232526;
+  margin-right: 20px;
+}
+
+.without_ampm::-webkit-datetime-edit-ampm-field {
+  display: none;
+}
+input[type="time"]::-webkit-calendar-picker-indicator {
+  background: none;
+}
+input[type="time"]::-webkit-clear-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  margin: -10px;
+}
+.availability_box input[type="radio"].toggle {
+  display: none;
+  & + label {
+    cursor: pointer;
+    padding: 4px 20px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #232526;
+    &:hover {
+      background: none;
+      color: #1a1a1a;
+    }
+    &:after {
+      background: #fff;
+      content: "";
+      height: 100%;
+      position: absolute;
+      top: 0;
+      transition: left 200ms cubic-bezier(0.77, 0, 0.175, 1);
+      width: 100%;
+      z-index: -1;
+    }
+  }
+  &.toggle-left + label {
+    border-right: 0;
+    background: #e6ebed;
+    &:after {
+      left: 100%;
+    }
+  }
+  &.toggle-right + label {
+    // margin-left: -5px;
+    background: #e6ebed;
+    &:after {
+      left: -100%;
+    }
+  }
+  &:checked + label {
+    cursor: default;
+    color: #fff;
+    background: #194af5;
+    transition: color 200ms;
+    border: 1px solid #194af5;
+    &:after {
+      left: 0;
+    }
+  }
+}
+.date_select_heading {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  color: #232526;
+}
+.weekDays-selector input {
+  display: none !important;
+}
+
+.weekDays-selector input[type="checkbox"] + .weekdays_label {
+  display: inline-block;
+  background: #e6ebed;
+  border-radius: 2px;
+  width: 80px;
+  height: 36px;
+  margin: 0 10px;
+  padding-top: 7px;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: #232526;
+}
+
+.weekDays-selector input[type="checkbox"]:checked + .weekdays_label {
+  background: #194af5;
+  color: #fff;
+  transition: all 200ms ease-in;
+}
+.slot_num_header {
+  padding: 0 289px;
+  margin: 50px 0 10px 0;
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: #232526;
+}
+.slots_num {
+  width: 55%;
+  padding: 8px 10px;
+  margin: 30px 0;
+}
+.slots_num::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #b7b7b7;
+}
+.slots_num:focus {
+  outline: 1px solid #194af5;
+}
+.create_slot_btn {
+  background: #194af5;
+  border: 1px solid #e6ebed;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 29px;
+  text-align: center;
+  color: #ffffff;
+  width: 410px;
+  padding: 8px;
+  margin: 0 30px;
+}

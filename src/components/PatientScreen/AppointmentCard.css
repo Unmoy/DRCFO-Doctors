@@ -1,0 +1,159 @@
+.myappointment--card {
+  background: #fff;
+  padding: 1.2em;
+  margin: 10px;
+  display: block;
+}
+
+.myappointment--card--header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.myappointment--card--header--content {
+  display: flex;
+}
+
+.myappointment--card--name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  display: block;
+  color: #000000;
+}
+
+.myappointment--card--header--detials {
+  color: #7d818b;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #7d818b;
+  display: block;
+  margin-top: 5px;
+}
+
+.myappointment--card--status {
+  border-radius: 2px;
+  border: none;
+  padding: 5px 20px;
+  font-size: 0.8em;
+  font-weight: 400;
+}
+
+.status--upcoming {
+  background: #f8af1f;
+  color: #ffffff;
+}
+
+.status--completed {
+  background: #e2f9d7;
+  color: #49aa19;
+}
+
+.status--cancelled {
+  background: #a61d24;
+  color: #ffffff;
+}
+
+.myappointment--card--image {
+  height: 80px;
+  margin-right: 1em;
+}
+
+.myappointment--card--detials {
+  border-bottom: 1px solid rgba(208, 208, 208, 0.8);
+  margin-top: 1.5em;
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: center;
+}
+
+.myappointment--card--detials--title {
+  font-weight: 400;
+  color: #7d818b;
+  margin-bottom: 0.8em;
+}
+
+.myappointment--card--detials--content {
+  color: #48484b;
+}
+.myappointment--card--detials--address {
+  max-width: 180px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  color: #48484b;
+  margin-right: 50px;
+}
+.myappointment--card--detials--content--other {
+  display: flex;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  margin-top: 20px;
+  color: #48484b;
+}
+.myappointment--card--detials--lookup {
+  margin-left: 5px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: #7d818b;
+}
+.myappointment--card--detials--content--other span {
+  margin-right: 5px;
+}
+
+.myappointment--card--detials--content--svg {
+  height: 1em;
+}
+
+.myappointment--card--footer {
+  padding-top: 1em;
+}
+.booking_status {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  color: #49aa19;
+}
+.myappointment--card--footer--booking--btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.myappointment--card--footer--booking {
+  background: #e6ebff;
+  border-radius: 2px;
+  padding: 6px 20px;
+  color: #194af5;
+  border: none;
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.myappointment--card--footer--detials {
+  display: inline-block;
+  margin-top: 1.2em;
+  font-weight: 500;
+}
+
+.footer--confirmed {
+  color: #49aa19;
+}
+
+.footer--pending {
+  color: #f8af1f;
+}
+
+.footer--rejected {
+  color: #a61d24;
+}
+
+.footer--completed {
+  color: #194af5;
+}
+
+.footer--cancelled {
+  color: #a61d24;
+}

@@ -1,0 +1,39 @@
+.appt_card {
+  background: #f7f7f7;
+  border-radius: 4px;
+  width: 350px;
+  height: 130px;
+  padding: 20px;
+  margin: 20px;
+}
+.appt_card button {
+  border: 1px solid #194af5;
+  border-radius: 4px;
+  background: transparent;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #194af5;
+  padding: 3px 25px;
+}
+.appt_time {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 34px;
+  letter-spacing: 0.04em;
+  color: #000000;
+}
+.appt_days ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+}
+.appt_days ul li {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 29px;
+  letter-spacing: 0.04em;
+  color: #232526;
+  margin-right: 10px;
+}

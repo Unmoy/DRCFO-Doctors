@@ -1,0 +1,95 @@
+.personal_detail_form {
+  padding: 40px 0;
+}
+.personal_detail_form h1 {
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 39px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #000000;
+}
+.personal_screen p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.04em;
+  color: #b7b7b7;
+  text-align: center;
+}
+.personal_detail_form label {
+  display: block;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #000000;
+  margin-bottom: 10px;
+}
+.personal_detail_box {
+  padding: 20px;
+  width: 450px;
+}
+.stepper_input {
+  padding: 7px;
+  border: 1px solid #a4a4a4;
+  border-radius: 4px;
+  padding-left: 50px;
+  margin-bottom: 30px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  color: #232526;
+}
+.stepper_input:focus {
+  outline: 1px solid #194af5;
+}
+
+.stepper_input5 {
+  padding: 8px;
+  border: 1px solid #a4a4a4;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #232526;
+}
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+  background-color: #fff !important;
+  /* padding: 8px 20px !important;
+  text-indent: 20px; */
+}
+.css-iqd1hh-MuiButtonBase-root-MuiChip-root:first-child {
+  margin-left: 40px !important;
+}
+.speciality_input {
+  margin-bottom: 30px !important;
+  width: 100% !important;
+}
+.input_icons .input_icon_clinic {
+  position: absolute;
+  padding: 10px;
+  width: 40px;
+}
+.input_icons .input_icon_clinic_auto {
+  position: absolute !important;
+  padding: 10px !important;
+  z-index: 100;
+  width: 44px !important;
+  margin-right: 20px !important;
+}
+
+.css-wb57ya-MuiFormControl-root-MuiTextField-root {
+  border: 1px solid #a4a4a4 !important;
+}
+.css-1a1fmpi-MuiInputBase-root-MuiInput-root:before {
+  display: none !important;
+}
+.MuiAutocomplete-hasPopupIcon.css-16awh2u-MuiAutocomplete-root
+  .MuiAutocomplete-inputRoot,
+.MuiAutocomplete-hasClearIcon.css-16awh2u-MuiAutocomplete-root
+  .MuiAutocomplete-inputRoot {
+  padding: 0px 40px;
+}

@@ -1,0 +1,142 @@
+.dashboard_nav {
+  padding: 30px 50px;
+  /* position: sticky; */
+  /* top: 0; */
+  background: #f6f6f7;
+  display: flex;
+  justify-content: space-between;
+}
+
+.search--box {
+  width: 65%;
+}
+
+.search--bar {
+  padding: 16px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.04);
+  border-radius: 0.5em;
+  background: #ffffff;
+  width: 100%;
+}
+
+.search--icon {
+  height: 1.4em;
+  width: 1.4em;
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+.search--text {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  color: #858585;
+  outline: none;
+  border: none;
+}
+
+.header--icon {
+  height: 28px;
+  margin: 10px 16px;
+  cursor: pointer;
+}
+
+.user--icon {
+  height: 40px;
+  margin: 4px 0 0 16px;
+  border-radius: 50%;
+  border: 1.5px solid #194af5;
+  cursor: pointer;
+  /* padding: 20px; */
+}
+.user--icon--demo {
+  height: 40px;
+  margin: 4px 0 0 16px;
+  /* border-radius: 50%; */
+  /* border: 1.5px solid #194af5; */
+  cursor: pointer;
+  padding: 5px;
+}
+.header--dropdown {
+  display: none;
+}
+.dropdown {
+  padding: 0 0 15px 0;
+}
+.dropdown:hover .header--dropdown {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #ffffff;
+  box-shadow: 0px 8px 64px rgba(25, 74, 245, 0.16);
+  border-radius: 8px;
+  width: 280px;
+  padding: 10px;
+}
+
+.header--dropdown--element {
+  padding: 20px 10px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+  color: #000000;
+  display: flex;
+}
+
+.header--dropdown--element:hover {
+  color: #194af5;
+  cursor: pointer;
+}
+
+.header--dropdown--element--top {
+  border-bottom: 1px solid rgba(208, 208, 208, 0.8);
+}
+.manage_icon {
+  margin-left: 10px;
+  height: 16px;
+  margin-top: 7px;
+}
+.naviagtor_link {
+  text-decoration: none;
+}
+.header_notify_btn {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header_options {
+  position: relative;
+}
+.counter {
+  width: 18px;
+  height: 18px;
+  background-color: #194af5;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  left: 2.7em;
+  color: #fff;
+}
+.notification_container {
+  background-color: #fff;
+  height: 25em;
+  width: 25em;
+  border-radius: 10px;
+  position: absolute;
+  right: 5%;
+  z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.notification_header {
+  padding: 20px 20px 10px 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.notification_header h3 {
+  font-size: 20px;
+}

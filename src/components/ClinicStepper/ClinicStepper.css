@@ -1,0 +1,41 @@
+.clinic_stepper_screen {
+  background: linear-gradient(
+    46.91deg,
+    #eef7ff 8.85%,
+    rgba(238, 247, 255, 0) 66.72%,
+    rgba(238, 247, 255, 0) 88.22%
+  );
+  padding: 50px 50px;
+}
+.css-117w1su-MuiStepIcon-text {
+  display: none;
+}
+/* .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root {
+  color: #49aa19 !important;
+} */
+
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-active {
+  color: #49aa19 !important;
+}
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed svg {
+  display: none;
+}
+.css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed path {
+  color: #49aa19 !important;
+  fill: #49aa19 !important;
+}
+.css-z7uhs0-MuiStepConnector-line {
+  border: 1px dashed #e6ebed !important;
+}
+.stepper_btn {
+  background: #194af5;
+  border: 1px solid #e6ebed;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 29px;
+  text-align: center;
+  color: #ffffff;
+  width: 410px;
+  padding: 8px;
+  margin-bottom: 30px;
+}

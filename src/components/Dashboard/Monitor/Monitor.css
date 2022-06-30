@@ -1,0 +1,7 @@
+.other {
+  margin: 2em 3em;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-template-rows: max-content;
+  gap: 2em;
+}
