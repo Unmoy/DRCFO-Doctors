@@ -27,7 +27,7 @@
 }
 
 .brand--logo:hover {
-  transform: scale(1.08) translateY(-2px);
+  /* transform: scale(1.08) translateY(-2px); */
 }
 
 .sidebar_menu_item {

@@ -1,7 +1,11 @@
 .other {
-  margin: 2em 3em;
+  margin: 2em 3em 0 3em;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
   grid-template-rows: max-content;
   gap: 2em;
+}
+
+.monitor {
+  /* height: 100vh; */
 }

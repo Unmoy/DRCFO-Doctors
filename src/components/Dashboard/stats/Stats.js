@@ -23,7 +23,7 @@ function Stats() {
       .then((res) => res.json())
       .then((data) => {
         setStats(data);
-        console.log(data);
+        // console.log(data);
       });
   };
   return (
@@ -33,7 +33,7 @@ function Stats() {
           <img src={patienticon} alt="icon" className="stat--icon" />
         </span>
         <span className="stat--text">
-          <span className="stat--heading">No. of patients</span>
+          <span className="stat--heading">Today's closing</span>
           <span className="stat--value">{stats?.patients?.completed}</span>
         </span>
       </div>
@@ -60,7 +60,7 @@ function Stats() {
           <img src={clockicon} alt="icon" className="stat--icon" />
         </span>
         <span className="stat--text">
-          <span className="stat--heading">Today's No-show</span>
+          <span className="stat--heading">Yesterday's No-show</span>
           <span className="stat--value">{stats?.patients?.noShow}</span>
         </span>
       </div>

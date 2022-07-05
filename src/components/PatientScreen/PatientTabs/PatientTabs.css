@@ -43,3 +43,49 @@
 .active-clinic_content {
   display: block;
 }
+.tabs_body {
+  /* background-color: red; */
+  position: absolute;
+  display: flex;
+  align-items: center;
+  top: -4em;
+  right: 50px;
+}
+.reset_btn_booking {
+  margin-bottom: -2px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.filter_wrapper {
+  position: relative;
+}
+
+.reset_btn_booking:hover {
+  color: #194af5;
+}
+
+.booking_filter_icon {
+  /* position: absolute;
+  right: 50%; */
+}
+.booking_filter_icon path {
+  fill: transparent;
+}
+.booking_filter_icon.activated path {
+  color: #194af5;
+}
+.booking_class {
+  z-index: 1;
+}
+.noShows_text {
+  font-size: 20px;
+  font-weight: 500;
+  height: 50vh;
+}
+.tabs_date_filter_input {
+  background-color: transparent;
+  width: 30px !important;
+}

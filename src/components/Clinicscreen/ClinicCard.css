@@ -80,3 +80,31 @@
   cursor: pointer;
   color: red !important;
 }
+.dates_dropdown_container {
+}
+.dates_dropdown {
+  margin-right: 0 !important;
+  position: relative;
+}
+.date_ul {
+  position: absolute;
+  background: #fff;
+  padding: 10px;
+  list-style-type: none;
+  left: -30%;
+  /* top: 10%; */
+}
+.date_ul li {
+  padding: 10px;
+}
+.date_ul li:hover {
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+.dates_drop_btn {
+  color: #fff !important;
+}
+.custom-calendar {
+  /* margin-bottom: 200px !important; */
+  padding-bottom: 0px !important;
+}

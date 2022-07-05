@@ -20,6 +20,8 @@
   line-height: 27px;
   display: block;
   color: #000000;
+  inline-size: 10em;
+  overflow-wrap: break-word;
 }
 
 .myappointment--card--header--detials {
@@ -110,6 +112,8 @@
 
 .myappointment--card--footer {
   padding-top: 1em;
+  display: flex;
+  justify-content: end;
 }
 .booking_status {
   font-weight: 500;
@@ -126,10 +130,11 @@
   background: #e6ebff;
   border-radius: 2px;
   padding: 6px 20px;
-  color: #194af5;
+  /* color: #49aa19; */
   border: none;
   font-weight: 500;
   font-size: 15px;
+  color: #194af5;
 }
 
 .myappointment--card--footer--detials {

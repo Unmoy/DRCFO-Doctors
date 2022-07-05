@@ -128,6 +128,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = authentication.onAuthStateChanged((user) => {
+      console.log(user);
       if (user) {
         setCurrentUser({
           user_name: user._delegate.displayName,

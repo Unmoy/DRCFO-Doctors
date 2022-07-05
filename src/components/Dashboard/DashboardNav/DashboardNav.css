@@ -1,7 +1,5 @@
 .dashboard_nav {
   padding: 30px 50px;
-  /* position: sticky; */
-  /* top: 0; */
   background: #f6f6f7;
   display: flex;
   justify-content: space-between;
@@ -33,6 +31,7 @@
   color: #858585;
   outline: none;
   border: none;
+  width: 90%;
 }
 
 .header--icon {
@@ -52,8 +51,6 @@
 .user--icon--demo {
   height: 40px;
   margin: 4px 0 0 16px;
-  /* border-radius: 50%; */
-  /* border: 1.5px solid #194af5; */
   cursor: pointer;
   padding: 5px;
 }
@@ -73,6 +70,7 @@
   border-radius: 8px;
   width: 280px;
   padding: 10px;
+  z-index: 10;
 }
 
 .header--dropdown--element {
@@ -119,7 +117,7 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 0px;
+  top: -2px;
   left: 2.7em;
   color: #fff;
 }
@@ -127,15 +125,19 @@
   background-color: #fff;
   height: 25em;
   width: 25em;
-  border-radius: 10px;
   position: absolute;
   right: 5%;
   z-index: 10;
+  overflow-y: auto;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 .notification_header {
   padding: 20px 20px 10px 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #fff;
 }
 .notification_header h3 {
   font-size: 20px;

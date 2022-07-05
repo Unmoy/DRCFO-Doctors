@@ -1,6 +1,6 @@
 .appointment_table {
   border-collapse: collapse;
-  width: 80%;
+  width: 92%;
   margin: auto;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .appointment_table tr:nth-child(even) {
-  background-color: #e6ebff;
+  background-color: #fff;
 }
 
 .appointment_table tr:hover {
@@ -24,7 +24,7 @@
   padding-bottom: 12px;
   text-align: left;
   background-color: #e6ebff;
-  color: #194af5;
+  color: #000;
 }
 .name_row {
   width: 12em;
@@ -33,7 +33,7 @@
   font-size: 15px;
 }
 .date_row {
-  width: 10em;
+  width: 12em;
 }
 .receipt_row {
   width: 10em;
@@ -43,7 +43,28 @@
 }
 .export_btn {
   background: #194af5 !important;
+  margin-top: 10px;
 }
 .export_dropdown {
-  margin-right: 5em;
+  margin-right: 3.4em;
+}
+.date_filter {
+  z-index: 1;
+}
+
+.legal_reset_btn {
+  margin-bottom: 2px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.legal_reset_btn:hover {
+  color: #194af5;
+}
+.legal_form__date_input {
+  background: transparent;
+  width: 30px !important;
 }

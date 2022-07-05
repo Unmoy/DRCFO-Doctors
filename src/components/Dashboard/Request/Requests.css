@@ -2,11 +2,37 @@
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.04);
   border-radius: 16px;
   background: #fff;
+  height: 26em;
+  overflow-y: scroll;
 }
-
+.responsive-calendar {
+  /* z-index: 80 !important; */
+  position: relative !important;
+  /* position: relative !important; */
+  right: 40% !important;
+  font-size: 8px !important;
+  /* background-color: blue !important; */
+}
+.wrappar_class {
+  /* right: 10% !important; */
+  position: absolute !important;
+  right: 0 !important;
+  top: 35%;
+  /* background-color: red; */
+}
+.requests--container::-webkit-scrollbar-thumb {
+  background: transparent !important;
+}
 .requests--header {
   padding: 20px;
   border-bottom: 1px solid #e6ebed;
+  background: #fff;
+  z-index: 5;
+  position: sticky;
+  top: 0;
+  display: flex;
+  position: relative;
+  /* justify-content: space-around; */
 }
 
 .requests--title {
@@ -16,16 +42,22 @@
   color: #000000;
 }
 
-.requests--viewall {
-  color: #194af5;
-  font-weight: 500;
-  font-size: 0.8em;
-  line-height: 1.2em;
-  float: right;
-  margin: 6px 8px;
+.reset_btn {
+  margin-bottom: 0 !important;
+  position: absolute;
+  right: 55px;
+  top: 35%;
   cursor: pointer;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
-
+.reset_btn:hover {
+  color: #194af5;
+}
+.reset_svg path {
+  fill: #000;
+}
 .requests--body {
   padding: 0 1em;
 }
@@ -39,6 +71,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  /* cursor: auto; */
 }
 
 .request--card--profile {
@@ -61,7 +94,7 @@
   font-weight: 400;
   font-size: 14px;
   color: #a9abad;
-  min-width: 16em;
+  width: 25em;
 }
 
 .request--card--name {
@@ -101,4 +134,21 @@
   border-radius: 13px;
   padding: 5px 8px;
   margin-left: 5px;
+}
+.date_filter_input {
+  position: relative;
+  cursor: pointer;
+}
+.date_filter_input_input {
+  width: 30px !important;
+}
+.date_filter_input_icon {
+  position: absolute;
+  right: 50%;
+}
+.date_filter_input_icon path {
+  fill: transparent;
+}
+.date_filter_input_icon.activated path {
+  color: #194af5;
 }

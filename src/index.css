@@ -13,16 +13,20 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: white;
+  background: transparent;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #eaeaea;
+  /* background: rgba(0, 0, 0, 0.1); */
   border-radius: 50px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #64b5f6;
+}
+.color_toast {
+  /* background-color: #64b5f6; */
 }

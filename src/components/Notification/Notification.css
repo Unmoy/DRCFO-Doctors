@@ -1,0 +1,15 @@
+.notification_card {
+  padding: 10px 20px;
+  background-color: rgba(230, 235, 255, 0.6);
+  margin: 20px;
+}
+.notification_card h2 {
+  font-size: 14px;
+}
+.booke_name {
+  font-weight: 700;
+  font-size: 16px;
+}
+.notification_card h2 {
+  font-size: 14px;
+}

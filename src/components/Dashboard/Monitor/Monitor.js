@@ -12,7 +12,7 @@ const Monitor = () => {
   const [searchText] = useOutletContext();
 
   return (
-    <div>
+    <div className="monitor">
       <Stats />
       <div className="other">
         <Requests

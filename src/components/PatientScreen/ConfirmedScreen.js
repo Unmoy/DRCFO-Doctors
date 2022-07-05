@@ -2,7 +2,6 @@ import React from "react";
 import docImage from "../../assets/images/docimage.png";
 import "./AppointmentCard.css";
 const ConfirmedScreen = ({ item }) => {
-  console.log(item);
   return (
     <div className="myappointment--card">
       <div className="myappointment--card--header">
@@ -97,26 +96,9 @@ const ConfirmedScreen = ({ item }) => {
         </div>
       </div>
       <div className="myappointment--card--footer">
-        <span className="myappointment--card--footer--booking--btn">
-          {/* {props.status === "cancelled" && (
-          <span className="myappointment--card--footer--detials footer--cancelled">
-            Booking Cancelled
-          </span>
-        )} */}
-          {item.status.confirmation === "PENDING" && (
-            <span className="myappointment--card--footer--detials footer--pending">
-              Confirmation Pending
-            </span>
-          )}
-          {item.status.confirmation === "CONFIRMED" && (
-            <span className="myappointment--card--footer--detials footer--confirmed">
-              Booking Confirmed
-            </span>
-          )}
-          <button className="myappointment--card--footer--booking">
-            Booking Details
-          </button>
-        </span>
+        <button className="myappointment--card--footer--booking">
+          Booking Confirmed
+        </button>
       </div>
     </div>
   );
