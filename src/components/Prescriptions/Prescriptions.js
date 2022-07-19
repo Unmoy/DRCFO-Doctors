@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { NavLink, useLocation } from "react-router-dom";
 const drugTemplate = {
   drugName: "",
   unit: "",
@@ -26,12 +27,27 @@ const Prescriptions = () => {
   const [advice, setAdvice] = useState("");
   const [followup, setFollowUp] = useState(null);
   const [drugList, setDrugList] = useState([drugTemplate]);
+  const [drugSet, setDrugSet] = useState([]);
   const [testList, setTestList] = useState([testTemplate]);
   const [patient, setPatient] = useState({});
   const [docterId, setDoctorId] = useState("");
   const [saveTemplate, setSaveTemplate] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [disable, setDisable] = useState(false);
+  const textInput = useRef(null);
+  const [focusName, setFocusName] = useState("");
+  const location = useLocation();
+  const complainref = useRef(null);
+  const diagnosisref = useRef(null);
+  const treatmentref = useRef(null);
+  const testref = useRef(null);
+  // const dateref = useRef(null);
+  const adviceref = useRef(null);
+  const drugNameref = useRef(null);
+  const [section, setSection] = useState("");
+  const [drugName, setDrugName] = useState("");
+  // const [typedrugName, setTypeDrugName] = useState("");
+  console.log(drugName);
   function openModal() {
     setIsOpen(true);
   }
@@ -45,6 +61,19 @@ const Prescriptions = () => {
         setPatient(data);
       });
   }, [id]);
+  useEffect(() => {
+    console.log(drugName);
+    if (drugName.length > 0) {
+      fetch(
+        `https://reservefree-backend.herokuapp.com/search?query=${drugName}&search=drug`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          setDrugSet(data);
+        });
+    }
+  }, [drugName]);
   const addrow = (e) => {
     e.preventDefault();
     setDrugList([...drugList, drugTemplate]);
@@ -55,6 +84,10 @@ const Prescriptions = () => {
   };
   const handleText = (e, index) => {
     e.preventDefault();
+    if (e.target.name === "drugName") {
+      setDrugName(e.target.value);
+      // drugNameref.current.value = e.target.value;
+    }
     const updatedList = drugList.map((item, i) =>
       index === i
         ? Object.assign(item, {
@@ -84,7 +117,7 @@ const Prescriptions = () => {
     }
   };
   const removeDrug = (e, index) => {
-    console.log(e.key);
+    // console.log(e.key);
     const filteredDrugs = [...drugList];
     if (e.key === "Enter" && e.target.value.length === 0) {
       e.preventDefault();
@@ -102,7 +135,6 @@ const Prescriptions = () => {
         ? Object.assign(item, { [e.target.name]: e.target.value })
         : item
     );
-
     setTestList(updatedTestList);
   };
   const handleComplain = (e) => {
@@ -117,29 +149,12 @@ const Prescriptions = () => {
     e.preventDefault();
     setDiagnosis(e.target.value);
   };
-  const handleFollowup = (e) => {
-    e.preventDefault();
-    setFollowUp(e.target.value);
-  };
+
   const handleAdvice = (e) => {
     e.preventDefault();
     setAdvice(e.target.value);
   };
-  // const handlevalidation = () => {
-  //   if (
-  //     !complain ||
-  //     !treatment ||
-  //     !testList ||
-  //     !drugList ||
-  //     !diagnosis ||
-  //     !followup ||
-  //     !advice
-  //   ) {
-  //     setDisable(true);
-  //   } else {
-  //     setDisable(false);
-  //   }
-  // };
+
   const submitbtn = (e) => {
     console.log(e);
     e.preventDefault();
@@ -190,24 +205,61 @@ const Prescriptions = () => {
         document.getElementById("save_btn").disabled = true;
       });
   };
-  const textInput = useRef(null);
-  // const DrugInput = useRef(null);
-  const [focusName, setFocusName] = useState("");
-  console.log(focusName);
+
   const handleFocus = (e) => {
-    console.log(e.target.name);
+    // console.log(e.target.name);
     setFocusName(e.target.name);
-    // if (textInput.current.focus === true) {
-    //   console.log("true");
-    //   setFocusName("follow");
+    setSection("");
+  };
+  const onSuggestHandler = (value) => {
+    setDrugName(value);
+    setDrugSet([]);
+    drugNameref.current.value = value;
+  };
+  const handleSuggestion = (e, index) => {
+    // if (e.target.name === "drugName") {
+    //   console.log("s");
+    //   setDrugName(e.target.value);
+    //   const updatedList = drugList.map((item, i) =>
+    //     Object.assign(item, {
+    //       [item.drugName]: [e.target.value],
+    //     })
+    //   );
+    //   // setDrugList(updatedList);
+    //   console.log(updatedList);
     // }
   };
+  useEffect(() => {
+    if (section === "complain") {
+      complainref.current.focus();
+    } else if (section === "diagnosis") {
+      diagnosisref.current.focus();
+    } else if (section === "treatment") {
+      treatmentref.current.focus();
+    } else if (section === "treatment") {
+      treatmentref.current.focus();
+    } else if (section === "test") {
+      testref.current.focus();
+    } else if (section === "drugName") {
+      drugNameref.current.focus();
+    } else if (section === "follow") {
+      textInput.current.focus();
+    } else if (section === "advice") {
+      adviceref.current.focus();
+    }
+  }, [section]);
+  console.log(drugList);
   return (
     <>
       <Topbar docterId={docterId} loadTemplate={loadTemplate} />
       <div>
-        <SideNav patient={patient} focusName={focusName} />
-        <form onSubmit={submitbtn}>
+        <SideNav
+          patient={patient}
+          focusName={focusName}
+          setSection={setSection}
+          section={section}
+        />
+        <form onSubmit={submitbtn} autoComplete="off">
           <div className="prescription_outlet">
             <div className="prescription_container">
               <div className="prescription_content" id="complain">
@@ -222,6 +274,7 @@ const Prescriptions = () => {
                   value={complain}
                   required
                   onFocus={handleFocus}
+                  ref={complainref}
                 ></textarea>
               </div>
               <div className="prescription_content" id="diagnosis">
@@ -234,6 +287,7 @@ const Prescriptions = () => {
                   onChange={handleDiagnosis}
                   value={diagnosis}
                   onFocus={handleFocus}
+                  ref={diagnosisref}
                 ></textarea>
               </div>
               <div className="prescription_content" id="treatment">
@@ -246,6 +300,7 @@ const Prescriptions = () => {
                   onChange={handleTreatment}
                   value={treatment}
                   onFocus={handleFocus}
+                  ref={treatmentref}
                 ></textarea>
               </div>
               <div className="prescription_content" id="tests">
@@ -263,6 +318,7 @@ const Prescriptions = () => {
                       // onBlur={(e) => removeTest(e, index)}
                       onKeyDown={(e) => handleTestKeyPress(e, index)}
                       onFocus={handleFocus}
+                      ref={testref}
                     ></input>
                   </div>
                 ))}
@@ -302,7 +358,7 @@ const Prescriptions = () => {
                     {drugList.map((item, index) => (
                       <tr key={index}>
                         <td className="text-left">{index + 1}</td>
-                        <td className="">
+                        <td className="drugname_input">
                           <input
                             // id="drugInput"
                             id={index < 1 ? "drugInput" : null}
@@ -310,11 +366,39 @@ const Prescriptions = () => {
                             name="drugName"
                             type="text"
                             className="prescription_table_input"
-                            onChange={(e) => handleText(e, index)}
+                            onChange={(e) => {
+                              handleText(e, index);
+                            }}
                             onKeyDown={(e) => removeDrug(e, index)}
-                            value={item.drugName}
+                            onBlur={(e) => {
+                              handleText(e, index);
+                              setTimeout(() => {
+                                setDrugSet([]);
+                              }, 100);
+                            }}
+                            value={drugName}
                             onFocus={handleFocus}
+                            ref={drugNameref}
                           />
+
+                          {drugSet.length ? (
+                            <div className="drug_suggestion">
+                              {drugSet.map((set, index) => (
+                                <div
+                                  key={index}
+                                  className="drug_suggestion_card"
+                                  onClick={() =>
+                                    onSuggestHandler(set.brandName)
+                                  }
+                                >
+                                  {set.brandName},{" "}
+                                  <span className="manufacturer">
+                                    {set.composition}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          ) : null}
                         </td>
                         <td className="small_box">
                           <input
@@ -417,6 +501,7 @@ const Prescriptions = () => {
                   className="prescription_textarea"
                   onChange={handleAdvice}
                   value={advice}
+                  ref={adviceref}
                 ></textarea>
               </div>
               <div className="d-flex justify-content-end me-5">

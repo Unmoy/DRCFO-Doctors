@@ -17,7 +17,7 @@ function Sidebar() {
         <NavLink
           to="monitor"
           className={(navLink) =>
-            navLink.isActive || location.pathname === "/dashboard"
+            navLink.isActive || location.pathname === "/"
               ? "sidebar_menu_item checked"
               : "sidebar_menu_item"
           }

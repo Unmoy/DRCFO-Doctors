@@ -30,6 +30,10 @@
 .appointment--card--age {
   font-size: 14px;
 }
+.appointment--card--date {
+  display: inline-block;
+  margin-left: 10px;
+}
 .appointments--body {
   padding: 0 1em;
 }
@@ -131,15 +135,19 @@
 }
 
 .appointments--card--button {
+  border: none;
   border-radius: 4px;
-  padding: 6px 20px;
+  padding: 6px 15px;
   font-weight: 400;
   font-size: 14px;
   color: #ffffff;
   cursor: pointer;
   margin-right: 20px;
+  background: none;
 }
-
+.appointments--card--button:active {
+  transform: scale(0.99);
+}
 .accept {
   background: #194af5;
   color: #f8f8f8;

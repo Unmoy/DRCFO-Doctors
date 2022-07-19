@@ -161,5 +161,30 @@ input[type="date"]::-webkit-inner-spin-button {
 }
 .enter_icon path {
   fill: #fff;
-  /* color: #fff; */
+}
+.drug_suggestion {
+  background-color: #fff;
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px,
+    rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+  position: absolute;
+  top: 50px;
+  z-index: 10;
+  left: 0%;
+  width: 50em;
+}
+.drugname_input {
+  position: relative;
+}
+.drug_suggestion_card {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: justify;
+}
+.drug_suggestion_card:hover {
+  background-color: #d6d6d6;
+}
+.manufacturer {
+  color: #194af5;
+  font-size: 12px;
 }

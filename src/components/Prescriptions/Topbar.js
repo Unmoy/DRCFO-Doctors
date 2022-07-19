@@ -29,7 +29,7 @@ const Topbar = ({ docterId, loadTemplate }) => {
   return (
     <nav className="NavbarItems">
       <div className="logo">
-        <Link to="/dashboard" className="route_link">
+        <Link to="/" className="route_link">
           <span className="topbar_header">
             <img src={leftarrow} alt="" /> Prescription Generator
           </span>

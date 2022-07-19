@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
 
 function RequestCard({ item, handleLoading }) {
-  console.log(item);
+  // console.log(item);
   const date = new Date(item.appointmentSlot);
   var gsDayNames = [
     " ",
@@ -26,7 +26,7 @@ function RequestCard({ item, handleLoading }) {
   const month = date.getMonth() + 1;
   var monthName = gsDayNames[month];
   const year = date.getFullYear();
-  console.log(day, monthName, year);
+  // console.log(day, monthName, year);
   const handleAction = (value) => {
     fetch("https://reservefree-backend.herokuapp.com/update/appointment", {
       method: "PUT",
@@ -51,9 +51,9 @@ function RequestCard({ item, handleLoading }) {
       <div className="request--card--detials">
         <span className="request--card--name">{item.detials.name}</span>
         <span className="request--card--age">{item.detials.age} </span>
-        <span className="request--card--gender">
-          {item.detials.gender} {day > 10 ? day : `0${day}`}{" "}
-          {monthName.substring(0, 3)}{" "}
+        <span className="request--card--gender">{item.detials.gender}</span>
+        <span className="request--card--date">
+          {day > 10 ? day : `0${day}`} {monthName.substring(0, 3)}{" "}
         </span>
         &bull;
         <span className="request--card--time">{item.slot.time}</span>
@@ -105,7 +105,7 @@ function Requests({ handleLoading, change, searchText }) {
   const [selectedDay, setSelectedDay] = useState(null);
   const [filteredDay, setFilteredDay] = useState("");
   const [appointmentlength, setAppointmentLength] = useState("");
-  console.log(appointmentlength);
+  // console.log(appointmentlength);
 
   const id = localStorage.getItem("doctor_id");
 
@@ -188,7 +188,7 @@ function Requests({ handleLoading, change, searchText }) {
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        stroke-width="2"
+        strokeWidth="2"
         className={
           selectedDay
             ? "date_filter_input_icon activated"
@@ -196,8 +196,8 @@ function Requests({ handleLoading, change, searchText }) {
         }
       >
         <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
         />
       </svg>
@@ -225,8 +225,14 @@ function Requests({ handleLoading, change, searchText }) {
       if (
         (val.slot.date === filteredDay || !filteredDay) &&
         (!searchText ||
-          val.detials.phone.includes(searchText) ||
-          val.detials.name.includes(searchText))
+          val.detials.phone
+            .trim()
+            .toLowerCase()
+            .includes(searchText.trim().toLowerCase()) ||
+          val.detials.name
+            .trim()
+            .toLowerCase()
+            .includes(searchText.trim().toLowerCase()))
       ) {
         return val;
       }

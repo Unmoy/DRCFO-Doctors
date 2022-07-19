@@ -53,7 +53,7 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem("doctor_id", data.id);
             if (data.message === "SUCCESS") {
               if (data.docter) {
-                navigate("/dashboard");
+                navigate("/");
               } else {
                 navigate("/clinicdetails");
               }
@@ -108,7 +108,7 @@ export const AuthProvider = ({ children }) => {
             if (data.message === "SUCCESS") {
               localStorage.setItem("doctor_id", data.id);
               if (data.docter) {
-                navigate("/dashboard");
+                navigate("/");
               } else {
                 navigate("/clinicdetails");
               }
@@ -128,7 +128,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = authentication.onAuthStateChanged((user) => {
-      console.log(user);
       if (user) {
         setCurrentUser({
           user_name: user._delegate.displayName,
@@ -152,7 +151,7 @@ export const AuthProvider = ({ children }) => {
         //     if (data.message === "SUCCESS") {
         //       localStorage.setItem("doctor_id", data.id);
         //       if (data.docter) {
-        //         navigate("/dashboard");
+        //         navigate("/");
         //       } else {
         //         navigate("/clinicdetails");
         //       }
@@ -162,7 +161,7 @@ export const AuthProvider = ({ children }) => {
       setLoading(false);
     });
     return unsubscribe;
-  }, []);
+  }, [currentUser]);
 
   const value = {
     currentUser,

@@ -45,12 +45,10 @@ const PersonalDetail = ({ setActiveStep }) => {
 
   const { register, handleSubmit } = useForm();
   const topSpecialities = [
-    "Orthopedics",
-    "Knee Surgery",
-    "Neck bone surgery",
-    "Accident fracture Surgery",
-    "Joint Pain",
-    "Joint Replacement Surgeon",
+    "Gynaecology",
+    "Paediatrician",
+    "Physician",
+    "Endocrinologist",
   ];
 
   return (

@@ -1,34 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Switch from "@mui/material/Switch";
 import "./ClinicCard.css";
 import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
-const label = { inputProps: { "aria-label": "Switch demo" } };
 const ClickOutHandler = require("react-onclickout");
 const ClinicCard = ({ item, doctorInfo }) => {
-  const [active, setActive] = useState(item.active);
   const [selectedDay, setSelectedDay] = useState([]);
   const [selectedEnableDay, setSelectedEnableDay] = useState([]);
   const [disabledDay, setDisabledDay] = useState([]);
-  // console.log(disabledDay);
   const [enabledDay, setEnabledDay] = useState([]);
-  // console.log(enabledDay);
-
   const [dates, setDates] = useState([]);
   const [enableddates, setEnabledDates] = useState([]);
-  // console.log(enableddates);
   const [array, setArray] = useState([]);
   const [enabledarray, setEnabledArray] = useState([]);
-  // console.log(dates);
   const navigate = useNavigate();
   const viewDetails = () => {
-    navigate(`/dashboard/tabs/${item._id}`);
+    navigate(`/tabs/${item._id}`);
   };
-  const handlevalue = (e) => {
-    console.log(e.target.checked);
-    setActive(e.target.checked);
-  };
+
   // useEffect(() => {
   //   fetch("https://reservefree-backend.herokuapp.com/update/clinic", {
   //     method: "PUT",
@@ -65,7 +54,7 @@ const ClinicCard = ({ item, doctorInfo }) => {
   }, [item._id]);
   useEffect(() => {
     let array = disabledDay;
-    // console.log(disabledDay);
+
     let newArray = array.map((a) => ({
       year: parseInt(a.substring(0, 4)),
       month: parseInt(a.substring(5, 7)),
@@ -75,14 +64,13 @@ const ClinicCard = ({ item, doctorInfo }) => {
   }, [disabledDay]);
   useEffect(() => {
     let enablearray = enabledDay;
-    // console.log(disabledDay);
+
     let newArray = enablearray.map((a) => ({
       year: parseInt(a.substring(0, 4)),
       month: parseInt(a.substring(5, 7)),
       day: parseInt(a.substring(8, 10)),
     }));
     setEnabledArray(newArray);
-    // console.log(newArray);
   }, [enabledDay]);
   useEffect(() => {
     const newDay = selectedDay;
@@ -174,7 +162,7 @@ const ClinicCard = ({ item, doctorInfo }) => {
         cursor: "pointer",
         margin: "0 0px",
       }}
-      className="my-custom-input-class" // a styling class
+      className="my-custom-input-class"
     />
   );
   const [open, setOpen] = useState(false);
@@ -193,12 +181,6 @@ const ClinicCard = ({ item, doctorInfo }) => {
           <h6>{doctorInfo.experience} years experience overall</h6>
         </div>
         <div className="dates_dropdown_container">
-          {/* <Switch
-            checked={active === false ? false : true}
-            {...label}
-            color="success"
-            onChange={handlevalue}
-          /> */}
           <ClickOutHandler onClickOut={clickOut}>
             <div className="dates_dropdown">
               <p
@@ -304,24 +286,12 @@ const ClinicCard = ({ item, doctorInfo }) => {
             {item.street}, {item.area}, {item.city}, {item.pincode},{" "}
             {item.state}
           </p>
-          <h4>Get direction</h4>
         </div>
       </div>
       <div className=" d-flex justify-content-end">
         <button className="details_view_cta" onClick={viewDetails}>
           View Details
         </button>
-        <div>
-          {/* <DatePicker
-            value={selectedDay}
-            onChange={setSelectedDay}
-            inputPlaceholder="Select a date"
-            inputClassName="my-custom-input"
-            shouldHighlightWeekends
-            disabledDays={array} // here we pass them
-          />
-          <button onClick={handleDisable}>Disable</button> */}
-        </div>
       </div>
     </div>
   );

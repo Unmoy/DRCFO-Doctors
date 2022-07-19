@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./SideNav.css";
 import userjpg from "../../assets/images/user.jpg";
 import { NavLink, useLocation } from "react-router-dom";
-const SideNav = ({ patient, focusName }) => {
+const SideNav = ({ patient, focusName, setSection, section }) => {
   const location = useLocation();
   // console.log(location.hash);
   return (
@@ -17,87 +17,80 @@ const SideNav = ({ patient, focusName }) => {
       <div className="sidebar_menu">
         {/* Dashboard */}
         <div
+          onClick={() => setSection("complain")}
           className={
-            location.hash === "#complain" || focusName === "complain"
+            section === "complain" || focusName === "complain"
               ? "sidebar_nav_item active"
               : "sidebar_nav_item"
           }
         >
-          <a href="#complain">
-            <span className="menu--text">Complain</span>
-          </a>
+          <span className="menu--text">Complain</span>
         </div>
         {/* Clinic */}
         <div
+          onClick={() => setSection("diagnosis")}
           className={
-            location.hash === "#diagnosis" || focusName === "diagnosis"
+            section === "diagnosis" || focusName === "diagnosis"
               ? "sidebar_nav_item active"
               : "sidebar_nav_item"
           }
         >
-          <a href="#diagnosis">
-            <span className="menu--text">Diagnosis</span>
-          </a>
+          <span className="menu--text">Diagnosis</span>
         </div>
         {/* Patients */}
         <div
+          onClick={() => setSection("treatment")}
           className={
-            location.hash === "#treatment" || focusName === "treatment"
+            section === "treatment" || focusName === "treatment"
               ? "sidebar_nav_item active"
               : "sidebar_nav_item"
           }
         >
-          <a href="#treatment">
-            <span className="menu--text">Treatment</span>
-          </a>
+          <span className="menu--text">Treatment</span>
         </div>
         {/* Analytics */}
         <div
+          onClick={() => setSection("test")}
           className={
-            location.hash === "#tests" || focusName === "test"
+            section === "test" || focusName === "test"
               ? "sidebar_nav_item active"
               : "sidebar_nav_item"
           }
         >
-          <a href="#tests">
-            <span className="menu--text">Test</span>
-          </a>
+          <span className="menu--text">Test</span>
         </div>
         {/* Legal */}
         <div
+          onClick={() => setSection("drugName")}
           className={
-            location.hash === "#drugs" || focusName === "drugName"
+            section === "drugName" || focusName === "drugName"
               ? "sidebar_nav_item active"
               : "sidebar_nav_item"
           }
         >
-          <a href="#drugs">
-            <span className="menu--text">Drugs</span>
-          </a>
+          <span className="menu--text">Drugs</span>
         </div>
         {/* Follow up */}
         <div
+          onClick={() => setSection("follow")}
           className={
-            location.hash === "#follow" || focusName === "follow"
+            section === "follow" || focusName === "follow"
               ? "sidebar_nav_item active"
               : "sidebar_nav_item"
           }
         >
-          <a href="#follow">
-            <span className="menu--text">Follow up</span>
-          </a>
+          <span className="menu--text">Follow up</span>
         </div>
         {/* General advice */}
         <div
+          onClick={() => setSection("advice")}
           className={
-            location.hash === "#advice" || focusName === "advice"
+            section === "advice" || focusName === "advice"
               ? "sidebar_nav_item active"
               : "sidebar_nav_item"
           }
         >
-          <a href="#advice">
-            <span className="menu--text">General advice</span>
-          </a>
+          <span className="menu--text">General advice</span>
         </div>
       </div>
     </div>

@@ -16,12 +16,47 @@ import Prescriptions from "./components/Prescriptions/Prescriptions";
 import CreateSlot from "./components/Clinicscreen/CreateSlot";
 import CreateAppointment from "./components/CreateAppointment/CreateAppointment";
 import AppointmentListForm from "./components/AppointmentListForm/AppointmentListForm";
+import PrivateRoute from "./components/Authentication/PrivateRoute";
 // APP JS
 function App() {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/" element={<Login />} />
+        {/* Dashboard Routes */}
+        <Route
+          path="/"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
+          <Route index element={<Monitor />} />
+          <Route path="monitor" element={<Monitor />} />
+          <Route exact path="clinicscreen" element={<Clinicscreen />} />
+          <Route exact path="patient" element={<PatientScreen />} />
+          <Route exact path="analytics" element={<Analytics />} />
+          <Route
+            exact
+            path="legal"
+            element={
+              <PrivateRoute>
+                <AppointmentListForm />
+              </PrivateRoute>
+            }
+          />
+          <Route exact path="doctordetails" element={<DoctorDetails />} />
+          <Route exact path="tabs/:id" element={<ClinicTabs />} />
+        </Route>
+        {/* Prescrition Routes */}
+        <Route path="/prescription/:id" element={<Prescriptions />} />
+        <Route
+          exact
+          path="/createappointment"
+          element={<CreateAppointment />}
+        ></Route>
+        {/* Other Routes */}
+        <Route path="/login" element={<Login />} />
         <Route path="/clinicdetails" element={<ClinicStepper step="0" />} />
         <Route path="/addslots" element={<ClinicStepper step="2" />} />
         <Route path="/editslots/:id" element={<UpdateSlots />} />
@@ -33,24 +68,6 @@ function App() {
           path="updatedashboardslots/:clinicid/:slotid"
           element={<UpdateDashboardSlots />}
         />
-        {/* Dashboard Routes */}
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route index element={<Monitor />} />
-          <Route path="monitor" element={<Monitor />} />
-          <Route exact path="clinicscreen" element={<Clinicscreen />} />
-          <Route exact path="patient" element={<PatientScreen />} />
-          <Route exact path="analytics" element={<Analytics />} />
-          <Route exact path="legal" element={<AppointmentListForm />} />
-          <Route exact path="doctordetails" element={<DoctorDetails />} />
-          <Route exact path="tabs/:id" element={<ClinicTabs />} />
-        </Route>
-        {/* Prescrition Routes */}
-        <Route path="/prescription/:id" element={<Prescriptions />} />
-        <Route
-          exact
-          path="/createappointment"
-          element={<CreateAppointment />}
-        ></Route>
       </Routes>
     </AuthProvider>
   );

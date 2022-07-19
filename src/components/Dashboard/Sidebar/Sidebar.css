@@ -26,10 +26,6 @@
   cursor: pointer;
 }
 
-.brand--logo:hover {
-  /* transform: scale(1.08) translateY(-2px); */
-}
-
 .sidebar_menu_item {
   padding: 10px 30px;
   display: flex;

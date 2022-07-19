@@ -53,7 +53,7 @@
 }
 
 .legal_reset_btn {
-  margin-bottom: 2px;
+  margin-bottom: 12px;
   margin-right: 10px;
   cursor: pointer;
   font-size: 12px;
@@ -67,4 +67,25 @@
 .legal_form__date_input {
   background: transparent;
   width: 30px !important;
+}
+
+.legal_topBar {
+  position: relative !important;
+}
+.calender_range {
+  position: absolute !important;
+  right: 5%;
+  top: 3.7em;
+}
+
+.legal_filter_input_icon {
+  /* position: absolute; */
+  /* right: 10em; */
+  margin-right: 20px;
+}
+.legal_filter_input_icon path {
+  fill: transparent;
+}
+.legal_filter_input_icon.activated path {
+  color: #194af5;
 }

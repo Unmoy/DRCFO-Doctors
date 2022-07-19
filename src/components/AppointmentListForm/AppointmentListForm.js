@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import "./AppointmentListForm.css";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
+const ClickOutHandler = require("react-onclickout");
 const AppointmentListForm = () => {
   const [confirmedData, setConfirmedData] = useState([]);
   const [filteredConfirmedData, setFilteredConfirmedData] = useState([]);
-  const [selectedDay, setSelectedDay] = useState({
-    from: null,
-    to: null,
-  });
   const id = localStorage.getItem("doctor_id");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [datefrom, setDateFrom] = useState("");
   const [dateto, setDateTo] = useState("");
   console.log(datefrom, dateto);
@@ -31,15 +31,23 @@ const AppointmentListForm = () => {
     "December",
   ];
   useEffect(() => {
-    if (selectedDay.from && selectedDay.to) {
-      var frommonthName = gsDayNames[selectedDay?.from?.month];
-      var tomonthName = gsDayNames[selectedDay?.to?.month];
-      const from = `${frommonthName}${selectedDay?.from?.day},${selectedDay?.from?.year}`;
-      const to = `${tomonthName}${selectedDay?.to?.day},${selectedDay?.to?.year}`;
-      setDateFrom(from);
-      setDateTo(to);
-    }
-  }, [selectedDay]);
+    let d = new Date(startDate);
+    const month = d.getMonth() + 1;
+    var monthName = gsDayNames[month];
+    let day = d.getDate();
+    let year = d.getFullYear();
+    // July01,2022
+    setDateFrom(`${monthName}${day > 10 ? day : `0${day}`},${year}`);
+    let endd = new Date(endDate);
+    const endmonth = endd.getMonth() + 1;
+    var endmonthName = gsDayNames[endmonth];
+    let endday = endd.getDate();
+    let endyear = endd.getFullYear();
+    // July01,2022
+    setDateTo(
+      `${endmonthName}${endday > 10 ? endday : `0${endday}`},${endyear}`
+    );
+  }, [startDate, endDate]);
   useEffect(() => {
     fetch(
       `https://reservefree-backend.herokuapp.com/get/docter/legal?id=${id}`,
@@ -51,14 +59,14 @@ const AppointmentListForm = () => {
       .then((data) => {
         setFilteredConfirmedData(data);
         setConfirmedData(data);
-        console.log(data);
+        // console.log(data);
       });
   }, [id]);
   const tableFilter = () => {
     const filteredData = confirmedData.filter((item) => {
       const appointmentDate = new Date(item.appointmentSlot);
-      const from = new Date(datefrom);
-      const to = new Date(dateto);
+      const from = new Date(startDate);
+      const to = new Date(endDate);
       console.log(appointmentDate, to, from);
       if (appointmentDate > from && appointmentDate <= to) {
         return item;
@@ -67,10 +75,10 @@ const AppointmentListForm = () => {
     setFilteredConfirmedData(filteredData);
   };
   useEffect(() => {
-    if (datefrom && dateto) {
+    if (startDate && endDate) {
       tableFilter();
     }
-  }, [dateto, datefrom]);
+  }, [startDate, endDate]);
   const exportPDF = () => {
     const unit = "pt";
     const size = "A4"; // Use A1, A2, A3 or A4
@@ -131,61 +139,76 @@ const AppointmentListForm = () => {
     doc.autoTable(content);
     doc.save("report.pdf");
   };
-  const renderCustomInput = ({ ref }) => (
-    <label className="date_filter_input" ref={ref}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth="2"
-        className={
-          selectedDay.from && selectedDay.from
-            ? "date_filter_input_icon activated"
-            : "date_filter_input_icon"
-        }
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-        />
-      </svg>
 
-      <input
-        readOnly
-        ref={ref}
-        className="legal_form__date_input"
-        style={{
-          outline: "none",
-          border: "none",
-          cursor: "pointer",
-          marginRight: "20px",
-          marginTop: "-10px",
-        }}
-      />
-    </label>
-  );
   const reset = () => {
-    setSelectedDay({ from: null, to: null });
+    setStartDate(null);
+    setEndDate(null);
     setFilteredConfirmedData(confirmedData);
+  };
+
+  const [open, setOpen] = useState(false);
+  const onChange = (dates) => {
+    const [start, end] = dates;
+
+    setStartDate(start);
+    setEndDate(end);
+  };
+  const clickOut = (e) => {
+    setOpen(false);
   };
   return (
     <div>
-      <div className="d-flex justify-content-end align-items-center">
-        {selectedDay.from && selectedDay.to && (
+      <div className="d-flex justify-content-end align-items-center legal_topBar">
+        {startDate && endDate && (
           <p className="legal_reset_btn" onClick={reset}>
             Reset
           </p>
         )}
-        <DatePicker
+        <p onClick={() => setOpen(!open)}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+            className={
+              !startDate && !endDate
+                ? "legal_filter_input_icon"
+                : "legal_filter_input_icon activated"
+            }
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+            />
+          </svg>
+        </p>
+
+        {open && (
+          <ClickOutHandler onClickOut={clickOut}>
+            <DatePicker
+              selected={startDate}
+              onChange={onChange}
+              startDate={startDate}
+              endDate={endDate}
+              selectsRange
+              inline
+              calendarClassName="calender_range"
+            />
+          </ClickOutHandler>
+        )}
+
+        {/* <DatePicker
           value={selectedDay}
           onChange={setSelectedDay}
           renderInput={renderCustomInput}
           className="date_filter"
-        />
+          calendarRangeBetweenClassName="calendarRange"
+        /> */}
+        {/* <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} /> */}
         <div class="export_dropdown">
           <p
             class="btn btn-primary dropdown-toggle export_btn "
@@ -201,11 +224,10 @@ const AppointmentListForm = () => {
               Export as PDF
             </li>
             <li>
-              {/* /get/docter/export?id=629103307f65ef3c93ad26c0&file=excel&from=June29,2022&to=July01,2022 */}
               <a
                 class="dropdown-item"
                 href={
-                  selectedDay
+                  startDate && endDate
                     ? `https://reservefree-backend.herokuapp.com/get/docter/export?id=${id}&file=excel&from=${datefrom}&to=${dateto}`
                     : `https://reservefree-backend.herokuapp.com/get/docter/export?id=${id}&file=excel`
                 }

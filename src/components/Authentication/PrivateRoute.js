@@ -4,10 +4,11 @@ import { useAuth } from "../context/AuthContext";
 
 export default function PrivateRoute({ children }) {
   const { currentUser } = useAuth();
+  console.log(currentUser);
   const location = useLocation();
-  return currentUser.user_email ? (
+  return currentUser?.user_email?.length || currentUser?.user_phone?.length ? (
     children
   ) : (
-    <Navigate to="/signup" replace state={{ from: location }} />
+    <Navigate to="/login" replace state={{ from: location }} />
   );
 }

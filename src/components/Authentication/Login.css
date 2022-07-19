@@ -38,6 +38,7 @@
   margin-bottom: 50px;
   background-color: #fff;
 }
+
 .login_btn button {
   background: #194af5;
   border: 1px solid #e6ebed;
@@ -50,6 +51,12 @@
   padding: 8px;
   margin-bottom: 30px;
 }
+
+.login_btn button:active {
+  /* box-shadow: 0px 4px 8px rgba(darken(dodgerblue, 30%)); */
+  transform: scale(0.99);
+}
+
 .number_input::placeholder {
   font-weight: 400;
   font-size: 16px;
@@ -87,7 +94,7 @@
 .divider h1:after {
   left: 20px;
 }
-.google_btn {
+.google_btn button {
   background-color: #fff;
   border: 1px solid #d5d5d5;
   border-radius: 4px;
@@ -98,6 +105,9 @@
   font-size: 18px;
   color: #232526;
   margin-top: 30px;
+}
+.google_btn button:active {
+  transform: scale(0.99);
 }
 .google_btn img {
   width: 20px;

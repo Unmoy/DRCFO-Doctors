@@ -63,7 +63,7 @@ const CreateAppointment = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        navigate("/dashboard");
+        navigate("/");
       });
   };
   const getGender = (e) => {
@@ -102,7 +102,7 @@ const CreateAppointment = () => {
   };
   return (
     <div className="createappointment_form">
-      <Link to="/dashboard" className="home_link">
+      <Link to="/" className="home_link">
         <div className="myappointment--textbox d-flex justify-content-start align-items-center">
           <svg
             width="30"

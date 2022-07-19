@@ -5,6 +5,7 @@ import google from "../../assets/images/g-icon.png";
 import "./Login.css";
 import "./OtpForm.css";
 import { useNavigate } from "react-router-dom";
+import RippleButton from "../Shared/RippleButton";
 
 const Login = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
@@ -71,45 +72,43 @@ const Login = () => {
     <section className="login_screen">
       <div className="container">
         <div className="row d-flex align-items-center">
-          {status === "login" &&
-            !currentUser?.user_email &&
-            !currentUser?.user_phone && (
-              <>
-                <div className="col-md-6 mb-4">
-                  <div className="login_form">
-                    <h1>Welcome!</h1>
-                    <p className="login_sub_heading">
-                      Sign In entering the information below
-                    </p>
-                    <div>
-                      <input
-                        type="text"
-                        name="number"
-                        id="number"
-                        className="number_input"
-                        placeholder="Enter Phone Number"
-                        value={
-                          number !== "" && number !== undefined ? number : null
-                        }
-                        onChange={(e) => setNumber(e.target.value)}
-                        onKeyDown={handleKeyPress}
-                        autoFocus={number ? "autofocus" : "autofocus"}
-                      />
-                      <div id="recaptcha-container" />
-                      <div className="login_btn">
-                        <button
-                          onClick={() => {
-                            getOtp();
-                          }}
-                        >
-                          Log In
-                        </button>
-                      </div>
-                      <div className="divider">
-                        <h1>or</h1>
-                      </div>
+          {status === "login" && (
+            <>
+              <div className="col-md-6 mb-4">
+                <div className="login_form">
+                  <h1>Welcome!</h1>
+                  <p className="login_sub_heading">
+                    Sign In entering the information below
+                  </p>
+                  <div>
+                    <input
+                      type="text"
+                      name="number"
+                      id="number"
+                      className="number_input"
+                      placeholder="Enter Phone Number"
+                      value={
+                        number !== "" && number !== undefined ? number : null
+                      }
+                      onChange={(e) => setNumber(e.target.value)}
+                      onKeyDown={handleKeyPress}
+                      autoFocus={number ? "autofocus" : "autofocus"}
+                    />
+                    <div id="recaptcha-container" />
+                    <div className="login_btn">
                       <button
-                        className="google_btn"
+                        onClick={() => {
+                          getOtp();
+                        }}
+                      >
+                        Log In
+                      </button>
+                    </div>
+                    <div className="divider">
+                      <h1>or</h1>
+                    </div>
+                    <div className="google_btn">
+                      <button
                         onClick={() => {
                           googleLogin();
                         }}
@@ -119,11 +118,12 @@ const Login = () => {
                     </div>
                   </div>
                 </div>
-                <div className="login_banner col-md-6">
-                  <img src={banner} alt="" />
-                </div>
-              </>
-            )}
+              </div>
+              <div className="login_banner col-md-6">
+                <img src={banner} alt="" />
+              </div>
+            </>
+          )}
           {status === "otp" && (
             <>
               <div className="col-md-6 mb-4">

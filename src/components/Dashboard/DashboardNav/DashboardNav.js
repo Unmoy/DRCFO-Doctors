@@ -37,7 +37,7 @@ function DashboardNav({ setSearchText }) {
     console.log("logout");
     logout();
     localStorage.removeItem("doctor_id");
-    navigate("/");
+    navigate("/login");
   };
   const handleChange = (e) => {
     setSearchText(e.target.value);
@@ -117,7 +117,7 @@ function DashboardNav({ setSearchText }) {
             setOpen(!open);
           }}
         />
-        <div className="counter">{notifications.length}</div>
+        {view && <div className="counter">{notifications.length}</div>}
         {open && (
           <div className="notification_container">
             <div className="notification_header">

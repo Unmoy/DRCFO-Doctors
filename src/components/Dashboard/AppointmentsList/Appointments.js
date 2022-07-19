@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "./Appointments.css";
 import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
+import RippleButton from "../../Shared/RippleButton";
 function AppointmentCard({ item }) {
-  console.log(item.booking);
+  // console.log(item.booking);
   const date = new Date(item.appointmentSlot);
   var gsDayNames = [
     " ",
@@ -25,7 +26,7 @@ function AppointmentCard({ item }) {
   const month = date.getMonth() + 1;
   var monthName = gsDayNames[month];
   const year = date.getFullYear();
-  console.log(day, monthName, year);
+  // console.log(day, monthName, year);
   const navigate = useNavigate();
   const handlePrescriptions = () => {
     navigate(`/prescription/${item._id}`);
@@ -41,9 +42,9 @@ function AppointmentCard({ item }) {
           {item.detials.name}
         </span>
         <span className="appointment--card--age">{item.detials.age} </span>
-        <span className="appointment--card--gender">
-          {item.detials.gender} {day > 10 ? day : `0${day}`}{" "}
-          {monthName.substring(0, 3)}
+        <span className="appointment--card--gender">{item.detials.gender}</span>
+        <span className="appointment--card--date">
+          {day > 10 ? day : `0${day}`} {monthName.substring(0, 3)}
         </span>
       </div>
       <span className="appointment--card--time">{displayTime}</span>
@@ -57,12 +58,12 @@ function AppointmentCard({ item }) {
 
       <div className="appointments--card--buttons">
         <div className="appointments--card-button--group">
-          <span
+          <button
             className="appointments--card--button accept"
             onClick={handlePrescriptions}
           >
             Diagnose
-          </span>
+          </button>
         </div>
       </div>
     </div>
@@ -73,7 +74,7 @@ function Appointments({ change, searchText }) {
   const [selectedDay, setSelectedDay] = useState(null);
   const [filteredDay, setFilteredDay] = useState("");
   const [confirmedData, setFilterConfirmedData] = useState([]);
-  console.log(confirmed);
+  // console.log(confirmed);
   const id = localStorage.getItem("doctor_id");
   var gsDayNames = [
     " ",
@@ -120,9 +121,7 @@ function Appointments({ change, searchText }) {
         setFilterConfirmedData(data);
       });
   }, [id]);
-  useEffect(() => {
-    confirmedFilter();
-  }, [confirmedData, searchText]);
+
   if (change === "true") {
     fetch(
       `https://reservefree-backend.herokuapp.com/get/appointments?docterId=${id}&confirmation=CONFIRMED&status=YET_TO_VISIT`,
@@ -142,7 +141,7 @@ function Appointments({ change, searchText }) {
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
-        stroke-width="2"
+        strokeWidth="2"
         className={
           selectedDay
             ? "date_filter_input_icon activated"
@@ -150,8 +149,8 @@ function Appointments({ change, searchText }) {
         }
       >
         <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
         />
       </svg>
@@ -183,8 +182,14 @@ function Appointments({ change, searchText }) {
       if (
         (val.slot.date === filteredDay || !filteredDay) &&
         (!searchText ||
-          val.detials.phone.includes(searchText) ||
-          val.detials.name.includes(searchText))
+          val.detials.phone
+            .trim()
+            .toLowerCase()
+            .includes(searchText.trim().toLowerCase()) ||
+          val.detials.name
+            .trim()
+            .toLowerCase()
+            .includes(searchText.trim().toLowerCase()))
       ) {
         return val;
       }
@@ -194,6 +199,9 @@ function Appointments({ change, searchText }) {
   useEffect(() => {
     confirmedFilter();
   }, [filteredDay]);
+  useEffect(() => {
+    confirmedFilter();
+  }, [confirmedData, searchText]);
   return (
     <div className="appointments--container">
       <div className="appointments--header">

@@ -65,13 +65,16 @@
 .request--card--age {
   font-size: 14px;
 }
+.request--card--date {
+  display: inline-block;
+  margin-left: 10px;
+}
 .request--card {
   width: 100%;
   margin: 20px 5px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  /* cursor: auto; */
 }
 
 .request--card--profile {
@@ -94,7 +97,7 @@
   font-weight: 400;
   font-size: 14px;
   color: #a9abad;
-  width: 25em;
+  width: 20em;
 }
 
 .request--card--name {
@@ -108,19 +111,23 @@
 }
 
 .requests--card--buttons {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  flex-basis: 160px;
+  margin-left: 10px;
+  /* flex-basis: 90px; */
+  /* background-color: red; */
 }
-
+.requests--card-button--group {
+  display: flex;
+}
 .requests--card--button {
-  transform: matrix(1, 0, 0, -1, 0, 0);
+  /* transform: matrix(1, 0, 0, -1, 0, 0); */
   padding: 7px;
   border-radius: 4px;
   cursor: pointer;
+  background-color: blue;
 }
-
+.requests--card--button:active {
+  transform: scale(0.99);
+}
 .decline {
   background: #e6ebff;
   margin-right: 1em;
