@@ -23,35 +23,19 @@ function App() {
     <AuthProvider>
       <Routes>
         {/* Dashboard Routes */}
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        >
+        <Route path="/" element={<Dashboard />}>
           <Route index element={<Monitor />} />
           <Route path="monitor" element={<Monitor />} />
-          <Route exact path="clinicscreen" element={<Clinicscreen />} />
-          <Route exact path="patient" element={<PatientScreen />} />
-          <Route exact path="analytics" element={<Analytics />} />
-          <Route
-            exact
-            path="legal"
-            element={
-              <PrivateRoute>
-                <AppointmentListForm />
-              </PrivateRoute>
-            }
-          />
-          <Route exact path="doctordetails" element={<DoctorDetails />} />
-          <Route exact path="tabs/:id" element={<ClinicTabs />} />
+          <Route path="clinicscreen" element={<Clinicscreen />} />
+          <Route path="patient" element={<PatientScreen />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="legal" element={<AppointmentListForm />} />
+          <Route path="doctordetails" element={<DoctorDetails />} />
+          <Route path="tabs/:id" element={<ClinicTabs />} />
         </Route>
         {/* Prescrition Routes */}
         <Route path="/prescription/:id" element={<Prescriptions />} />
         <Route
-          exact
           path="/createappointment"
           element={<CreateAppointment />}
         ></Route>
@@ -60,11 +44,10 @@ function App() {
         <Route path="/clinicdetails" element={<ClinicStepper step="0" />} />
         <Route path="/addslots" element={<ClinicStepper step="2" />} />
         <Route path="/editslots/:id" element={<UpdateSlots />} />
-        <Route exact path="editclinic/:id" element={<EditClinic />} />
-        <Route exact path="editpatient/:id" element={<EditPatient />} />
-        <Route exact path="createslot/:id" element={<CreateSlot />} />
+        <Route path="editclinic/:id" element={<EditClinic />} />
+        <Route path="editpatient/:id" element={<EditPatient />} />
+        <Route path="createslot/:id" element={<CreateSlot />} />
         <Route
-          exact
           path="updatedashboardslots/:clinicid/:slotid"
           element={<UpdateDashboardSlots />}
         />

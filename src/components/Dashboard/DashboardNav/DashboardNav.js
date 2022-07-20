@@ -117,7 +117,11 @@ function DashboardNav({ setSearchText }) {
             setOpen(!open);
           }}
         />
-        {view && <div className="counter">{notifications.length}</div>}
+        {view && (
+          <div className="counter">
+            {notifications.length > 9 ? "9+" : notifications.length}
+          </div>
+        )}
         {open && (
           <div className="notification_container">
             <div className="notification_header">

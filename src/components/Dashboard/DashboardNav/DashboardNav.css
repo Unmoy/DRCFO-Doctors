@@ -112,13 +112,13 @@
   background-color: #194af5;
   border-radius: 50%;
   padding: 5px;
-  font-size: 12px;
+  font-size: 11px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
   top: -2px;
-  left: 2.7em;
+  left: 3em;
   color: #fff;
 }
 .notification_container {

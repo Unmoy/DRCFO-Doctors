@@ -165,7 +165,7 @@ const PatientTabs = () => {
                     strokeWidth="2"
                     className={
                       !bookingstartDate && !bookingendDate
-                        ? "legal_filter_input_icon"
+                        ? "legal_filter_input_icon patients_tabs_picker"
                         : "legal_filter_input_icon activated"
                     }
                   >
@@ -251,7 +251,7 @@ const PatientTabs = () => {
                     strokeWidth="2"
                     className={
                       !startDate && !endDate
-                        ? "legal_filter_input_icon"
+                        ? "legal_filter_input_icon patients_tabs_picker"
                         : "legal_filter_input_icon activated"
                     }
                   >

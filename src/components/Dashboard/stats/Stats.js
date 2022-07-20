@@ -4,6 +4,7 @@ import calendericon from "../../../assets/images/background/calender.png";
 import clockicon from "../../../assets/images/background/clock.png";
 import revenueicon from "../../../assets/images/background/revenue.png";
 import { useEffect, useState } from "react";
+import Skeleton from "@mui/material/Skeleton";
 function Stats() {
   const doctorid = localStorage.getItem("doctor_id");
   const [stats, setStats] = useState({});
@@ -34,7 +35,13 @@ function Stats() {
         </span>
         <span className="stat--text">
           <span className="stat--heading">Today's closing</span>
-          <span className="stat--value">{stats?.patients?.completed}</span>
+          <span className="stat--value">
+            {stats?.patients ? (
+              stats?.patients?.completed
+            ) : (
+              <Skeleton animation="wave" />
+            )}
+          </span>
         </span>
       </div>
       <div className="stat--card card--2">
@@ -43,7 +50,13 @@ function Stats() {
         </span>
         <span className="stat--text">
           <span className="stat--heading">Today's Revenue</span>
-          <span className="stat--value">&#8377; {stats?.revenue?.today}</span>
+          <span className="stat--value">
+            {stats?.revenue ? (
+              <span>&#8377; {stats?.revenue?.today}</span>
+            ) : (
+              <Skeleton animation="wave" />
+            )}
+          </span>
         </span>
       </div>
       <div className="stat--card card--3">
@@ -52,7 +65,14 @@ function Stats() {
         </span>
         <span className="stat--text">
           <span className="stat--heading">Monthly Revenue</span>
-          <span className="stat--value">&#8377; {stats?.revenue?.monthly}</span>
+          <span className="stat--value">
+            {/* &#8377; {stats?.revenue?.monthly} */}
+            {stats?.revenue ? (
+              <span>&#8377; {stats?.revenue?.monthly}</span>
+            ) : (
+              <Skeleton animation="wave" />
+            )}
+          </span>
         </span>
       </div>
       <div className="stat--card card--4">
@@ -61,7 +81,14 @@ function Stats() {
         </span>
         <span className="stat--text">
           <span className="stat--heading">Yesterday's No-show</span>
-          <span className="stat--value">{stats?.patients?.noShow}</span>
+          <span className="stat--value">
+            {stats?.patients?.noShow}
+            {stats?.patients ? (
+              stats?.patients?.noShow
+            ) : (
+              <Skeleton animation="wave" />
+            )}
+          </span>
         </span>
       </div>
     </div>

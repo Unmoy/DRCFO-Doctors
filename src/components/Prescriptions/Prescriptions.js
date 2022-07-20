@@ -9,6 +9,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { NavLink, useLocation } from "react-router-dom";
+import { ReactSearchAutocomplete } from "react-search-autocomplete";
 const drugTemplate = {
   drugName: "",
   unit: "",
@@ -46,7 +47,7 @@ const Prescriptions = () => {
   const drugNameref = useRef(null);
   const [section, setSection] = useState("");
   const [drugName, setDrugName] = useState("");
-  // const [typedrugName, setTypeDrugName] = useState("");
+  const [drugSetIndex, setDrugSetIndex] = useState(null);
   console.log(drugName);
   function openModal() {
     setIsOpen(true);
@@ -69,7 +70,6 @@ const Prescriptions = () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           setDrugSet(data);
         });
     }
@@ -86,7 +86,7 @@ const Prescriptions = () => {
     e.preventDefault();
     if (e.target.name === "drugName") {
       setDrugName(e.target.value);
-      // drugNameref.current.value = e.target.value;
+      setDrugSetIndex(index);
     }
     const updatedList = drugList.map((item, i) =>
       index === i
@@ -211,24 +211,21 @@ const Prescriptions = () => {
     setFocusName(e.target.name);
     setSection("");
   };
-  const onSuggestHandler = (value) => {
-    setDrugName(value);
+  const onSuggestHandler = (value, index) => {
+    // setDrugName(value);
+    console.log(value);
     setDrugSet([]);
-    drugNameref.current.value = value;
+    setDrugList(
+      drugList.map((item, i) => {
+        if (index == i) {
+          return { ...item, drugName: value };
+        } else {
+          return item;
+        }
+      })
+    );
   };
-  const handleSuggestion = (e, index) => {
-    // if (e.target.name === "drugName") {
-    //   console.log("s");
-    //   setDrugName(e.target.value);
-    //   const updatedList = drugList.map((item, i) =>
-    //     Object.assign(item, {
-    //       [item.drugName]: [e.target.value],
-    //     })
-    //   );
-    //   // setDrugList(updatedList);
-    //   console.log(updatedList);
-    // }
-  };
+
   useEffect(() => {
     if (section === "complain") {
       complainref.current.focus();
@@ -249,6 +246,8 @@ const Prescriptions = () => {
     }
   }, [section]);
   console.log(drugList);
+  console.log(drugSet);
+
   return (
     <>
       <Topbar docterId={docterId} loadTemplate={loadTemplate} />
@@ -370,26 +369,25 @@ const Prescriptions = () => {
                               handleText(e, index);
                             }}
                             onKeyDown={(e) => removeDrug(e, index)}
-                            onBlur={(e) => {
-                              handleText(e, index);
+                            onBlur={() => {
                               setTimeout(() => {
                                 setDrugSet([]);
-                              }, 100);
+                              }, 500);
                             }}
-                            value={drugName}
+                            value={item.drugName}
                             onFocus={handleFocus}
                             ref={drugNameref}
                           />
-
-                          {drugSet.length ? (
+                          {drugSetIndex === index && drugSet.length > 0 && (
                             <div className="drug_suggestion">
-                              {drugSet.map((set, index) => (
+                              {drugSet.map((set, i) => (
                                 <div
-                                  key={index}
+                                  key={i}
                                   className="drug_suggestion_card"
-                                  onClick={() =>
-                                    onSuggestHandler(set.brandName)
-                                  }
+                                  onClick={() => {
+                                    console.log(set.brandName);
+                                    onSuggestHandler(set.brandName, index);
+                                  }}
                                 >
                                   {set.brandName},{" "}
                                   <span className="manufacturer">
@@ -398,7 +396,7 @@ const Prescriptions = () => {
                                 </div>
                               ))}
                             </div>
-                          ) : null}
+                          )}
                         </td>
                         <td className="small_box">
                           <input

@@ -5,7 +5,6 @@ import google from "../../assets/images/g-icon.png";
 import "./Login.css";
 import "./OtpForm.css";
 import { useNavigate } from "react-router-dom";
-import RippleButton from "../Shared/RippleButton";
 
 const Login = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));

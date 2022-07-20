@@ -89,3 +89,6 @@
   background-color: transparent;
   width: 30px !important;
 }
+.patients_tabs_picker {
+  margin-right: -30px !important;
+}

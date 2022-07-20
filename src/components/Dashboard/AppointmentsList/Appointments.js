@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Appointments.css";
 import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
-import RippleButton from "../../Shared/RippleButton";
+
 function AppointmentCard({ item }) {
   // console.log(item.booking);
   const date = new Date(item.appointmentSlot);

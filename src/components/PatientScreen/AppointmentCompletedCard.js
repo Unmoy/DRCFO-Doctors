@@ -56,7 +56,7 @@ const AppointmentCompletedCard = ({ item }) => {
             Next Look-Up Date
           </div>
           <div className="myappointment--card--detials--content myappointment--card--detials--content--other">
-            <span className="">
+            <span className="apppointent_card_date">
               <svg
                 width="26"
                 height="22"

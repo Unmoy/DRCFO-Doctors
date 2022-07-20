@@ -37,8 +37,11 @@ const ClinicCard = ({ item, doctorInfo }) => {
   // }, [active, item._id]);
 
   useEffect(() => {
+    const current = new Date();
+    const month = current.getMonth() + 1;
+    const formatMonth = month >= 10 ? month : `0${month}`;
     fetch(
-      `https://reservefree-backend.herokuapp.com/get/clinic/dates?clinicId=${item._id}&month=07&year=2022&state=inactive`
+      `https://reservefree-backend.herokuapp.com/get/clinic/dates?clinicId=${item._id}&month=${formatMonth}&year=2022&state=inactive`
     )
       .then((response) => response.json())
       .then((data) => {
