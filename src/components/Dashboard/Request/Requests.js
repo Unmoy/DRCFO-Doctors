@@ -45,26 +45,18 @@ function RequestCard({ item, handleLoading, searchId }) {
       .then((data) => console.log(data));
     handleLoading("true");
   };
-  // const [id, setId] = useState(localStorage.getItem("notification_id"));
+  console.log(searchId);
   useEffect(() => {
-    console.log("1");
     if (searchId && searchId == item._id) {
-      console.log("2");
       setActive(true);
-      // const div = document.getElementsByClassName("selected");
-      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       if (myRef.current) {
-        console.log("ref");
         myRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
       }
-    } else {
-      // setActive(false);
+      setTimeout(() => {
+        setActive(false);
+      }, 3000);
     }
-    setTimeout(() => {
-      setActive(false);
-      // setId(null);
-    }, 3000);
-  }, [searchId]);
+  }, [searchId, item._id]);
   const initials = item.detials.name.charAt(0).toUpperCase();
   return (
     <div
@@ -123,15 +115,9 @@ function RequestCard({ item, handleLoading, searchId }) {
 
 function Requests({ handleLoading, change, searchText, searchId }) {
   const [pending, setPending] = useState([]);
-  // console.log(pending);
   const [filterReqeuestData, setFilterReqeuestData] = useState([]);
-
-  // console.log(pending);
   const [selectedDay, setSelectedDay] = useState(null);
   const [filteredDay, setFilteredDay] = useState("");
-  const [appointmentlength, setAppointmentLength] = useState("");
-  // console.log(appointmentlength);
-
   const id = localStorage.getItem("doctor_id");
 
   var gsDayNames = [
@@ -171,23 +157,29 @@ function Requests({ handleLoading, change, searchText, searchId }) {
         setPending(data);
         setFilterReqeuestData(data);
       });
-    // let interval = setInterval(() => {
-    //   fetch(
-    //     `https://reservefree-backend.herokuapp.com/get/appointments?docterId=${id}&confirmation=PENDING`,
-    //     {
-    //       method: "GET",
-    //     }
-    //   )
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //       setPending(data);
-    //       setFilterReqeuestData(data);
-    //     });
-    // }, 3000);
-    // return () => {
-    //   clearInterval(interval);
-    // };
-  }, [id]);
+    if (!filteredDay || !searchId) {
+      console.log(filteredDay, searchId);
+
+      let interval = setInterval(() => {
+        console.log("found");
+        fetch(
+          `https://reservefree-backend.herokuapp.com/get/appointments?docterId=${id}&confirmation=PENDING`,
+          {
+            method: "GET",
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            setPending(data);
+            setFilterReqeuestData(data);
+          });
+      }, 5000);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [id, filteredDay]);
   useEffect(() => {
     requestFilter();
   }, [filterReqeuestData, searchText]);
@@ -267,7 +259,7 @@ function Requests({ handleLoading, change, searchText, searchId }) {
   useEffect(() => {
     requestFilter();
   }, [filteredDay, searchText]);
-
+  // const reversed = [...pending].reverse();
   return (
     <div className="requests--container">
       <div className="requests--header">
@@ -288,14 +280,15 @@ function Requests({ handleLoading, change, searchText, searchId }) {
         )}
       </div>
       <div className="requests--body">
-        {pending.map((item) => (
-          <RequestCard
-            handleLoading={handleLoading}
-            key={item._id}
-            item={item}
-            searchId={searchId}
-          />
-        ))}
+        {pending &&
+          pending.map((item) => (
+            <RequestCard
+              handleLoading={handleLoading}
+              key={item._id}
+              item={item}
+              searchId={searchId}
+            />
+          ))}
       </div>
     </div>
   );

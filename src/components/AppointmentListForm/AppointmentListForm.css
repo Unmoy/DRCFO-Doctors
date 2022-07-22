@@ -1,16 +1,12 @@
 .appointment_table {
-  border-collapse: collapse;
-  border-radius: 4px;
-  overflow: hidden;
-}
-.legal_table {
+  border-collapse: separate;
+  border: 1px solid #d6d6d6;
+  border-radius: 6px 6px 6px 6px;
+  border-spacing: 0 !important;
   width: 92%;
   margin: auto;
 }
-.legal_table {
-  border: 1px solid #d6d6d6;
-  border-radius: 4px;
-}
+
 .appointment_table td,
 .appointment_table th {
   /* border-radius: 10px; */
@@ -85,16 +81,9 @@
 .legal_topBar {
   position: relative !important;
 }
-.calender_range {
-  position: absolute !important;
-  left: 5%;
-  top: 4em;
-}
 
 .legal_filter_input_icon {
-  /* position: absolute; */
-  /* right: 10em; */
-  /* margin-right: 20px; */
+  cursor: pointer;
 }
 .legal_filter_input_icon path {
   /* fill: transparent; */

@@ -80,36 +80,25 @@ function DashboardNav({ setSearchText, setSearchId }) {
         });
         // console.log(result);
         if (result.length > 0) {
-          console.log("if", date, result);
+          // console.log("if", date, result);
           NewNotifications = NewNotifications.map((i) => {
             if (i.date === date) {
-              console.log("if1", date);
+              // console.log("if1", date);
               return { date: date, data: [...i.data, item] };
             } else {
               return i;
             }
           });
         } else {
-          console.log("else", date, item);
+          // console.log("else", date, item);
           NewNotifications.push({ date: date, data: [item] });
         }
       }
-      console.log("Sorted", NewNotifications);
+      // console.log("Sorted", NewNotifications);
       setSortedNotification(NewNotifications);
     }
   }, [notifications]);
-  // NewNotifications = []
-  // Notification.map((item)=>{
-  //     date = getDateString(item.created)
-  //     let result = NewNotifications.filter((i)=> return i.date===date)
-  //     if(result.length){
-  //         NewNotifications =NewNotifications.map((i)=> if(i.date===date){
-  //             return {date: i.date, data: [...i.data, item]}
-  //         })
-  //     } else {
-  //         NewNotifications.push({date:date, data: [item]})
-  //     }
-  // })
+
   const checkNotifications = async () => {
     await fetch(
       `https://reservefree-backend.herokuapp.com/notify/check?user=${doctorid}`
@@ -193,8 +182,8 @@ function DashboardNav({ setSearchText, setSearchId }) {
               <div className="notification_header">
                 <h3>Notifications</h3>
               </div>
-              {notifications &&
-                notifications.map((item, index) => (
+              {sortedNotification &&
+                sortedNotification.map((item, index) => (
                   <Notification
                     key={index}
                     item={item}

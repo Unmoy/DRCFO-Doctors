@@ -90,5 +90,24 @@
   width: 30px !important;
 }
 .patients_tabs_picker {
-  margin-right: -30px !important;
+  /* margin-right: -30px !important; */
+}
+.tab_wrap {
+  position: relative;
+}
+.calender_range {
+  position: absolute !important;
+  right: 0% !important;
+  top: 2em;
+}
+.patient_tab_reset_btn {
+  margin-right: 15px;
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.patient_tab_reset_btn:hover {
+  color: #194af5;
 }

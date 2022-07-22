@@ -107,18 +107,18 @@
   position: relative;
 }
 .counter {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   background-color: #194af5;
   border-radius: 50%;
   padding: 5px;
-  font-size: 11px;
+  font-size: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: -2px;
-  left: 3em;
+  top: 1px;
+  left: 2.5em;
   color: #fff;
 }
 .notification_container {

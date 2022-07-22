@@ -110,13 +110,7 @@ function Appointments({ change, searchText }) {
     )
       .then((response) => response.json())
       .then((data) => {
-        // let sorted = data.sort((a, b) => {
-        //   return new Date(a.appointmentSlot) > new Date(b.appointmentSlot)
-        //     ? 1
-        //     : -1;
-        // });
-
-        // console.log("Sorted", sorted);
+  
         setConfirmed(data);
         setFilterConfirmedData(data);
       });

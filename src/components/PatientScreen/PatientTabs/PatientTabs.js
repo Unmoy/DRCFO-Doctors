@@ -146,11 +146,11 @@ const PatientTabs = () => {
               : "patient_content_tab"
           }
         >
-          <div className="">
+          <div className="tab_wrap">
             <div className="d-flex justify-content-end me-5 filter_wrapper">
-              <div className="tabs_body">
+              <div className="tabs_body ">
                 {bookingstartDate && bookingendDate && (
-                  <p className="legal_reset_btn" onClick={reset}>
+                  <p className="patient_tab_reset_btn" onClick={reset}>
                     Reset
                   </p>
                 )}
@@ -165,7 +165,7 @@ const PatientTabs = () => {
                     strokeWidth="2"
                     className={
                       !bookingstartDate && !bookingendDate
-                        ? "legal_filter_input_icon patients_tabs_picker"
+                        ? "legal_filter_input_icon"
                         : "legal_filter_input_icon activated"
                     }
                   >
@@ -224,19 +224,11 @@ const PatientTabs = () => {
           <div>
             <div className="d-flex justify-content-end me-5 filter_wrapper">
               <div className="tabs_body">
-                {/* {selectedDay.from && selectedDay.to && (
-                  <p className="reset_btn_booking" onClick={appointmentreset}>
-                    Reset
-                  </p>
-                )}
-                <DatePicker
-                  value={selectedDay}
-                  onChange={setSelectedDay}
-                  className="booking_class"
-                  renderInput={renderCustomInput}
-                /> */}
                 {startDate && endDate && (
-                  <p className="legal_reset_btn" onClick={appointmentreset}>
+                  <p
+                    className="patient_tab_reset_btn"
+                    onClick={appointmentreset}
+                  >
                     Reset
                   </p>
                 )}

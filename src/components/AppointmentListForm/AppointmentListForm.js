@@ -230,7 +230,7 @@ const AppointmentListForm = () => {
           </p>
         )}
       </div>
-      <div className="legal_table">
+      <div className="">
         <table className="appointment_table">
           <thead>
             <tr>

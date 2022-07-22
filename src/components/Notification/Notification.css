@@ -1,7 +1,7 @@
 .notification_card {
   padding: 7px 10px;
   /* background-color: rgba(230, 235, 255, 0.6); */
-  margin: 20px 15px 20px 15px;
+  margin: 10px 15px 10px 15px;
   border-radius: 4px;
   position: relative;
   cursor: pointer;
@@ -42,4 +42,12 @@
   color: #b7b7b7;
   min-width: 60px;
   margin-left: 10px;
+}
+.date_header {
+  padding: 10px 20px 0 20px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #b7b7b7;
+  /* background-color: blue; */
 }
