@@ -1,19 +1,17 @@
 import { useAuth } from "../context/AuthContext";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import banner from "../../assets/images/banner.png";
 import google from "../../assets/images/g-icon.png";
 import "./Login.css";
 import "./OtpForm.css";
-import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
-  const navigate = useNavigate();
   const [error, setError] = useState("");
   const [number, setNumber] = useState("");
   const [result, setResult] = useState("");
   const [status, setStatus] = useState("login");
-  const [loading, setLoading] = useState(false);
+
   const handleChange = (element, index) => {
     if (isNaN(element.value)) return false;
     setOtp([...otp.map((d, idx) => (idx === index ? element.value : d))]);
@@ -22,11 +20,10 @@ const Login = () => {
       element.nextSibling.focus();
     }
   };
-  const { currentUser } = useAuth();
+
   const { signInWithGoogle } = useAuth();
   const { signInWithPhone } = useAuth();
   const { signInWithOtp } = useAuth();
-  const { logout } = useAuth();
 
   const googleLogin = async () => {
     try {
@@ -55,7 +52,6 @@ const Login = () => {
     otp.map((o) => (otp1 += o));
     if (otp1 === "" || otp1 === null) return;
     signInWithOtp(result, otp1);
-    setLoading(true);
   };
   const handleKeyPress = (e) => {
     if (e.key === "Enter") {

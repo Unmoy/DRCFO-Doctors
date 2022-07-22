@@ -11,14 +11,15 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
-// import io from "socket.io-client";
 import Notification from "../../Notification/Notification";
-// import MuiAlert from "@mui/material/Alert";
-function DashboardNav({ setSearchText }) {
+const ClickOutHandler = require("react-onclickout");
+function DashboardNav({ setSearchText, setSearchId }) {
+  // console.log(first)
   const [details, setDetails] = useState({});
   const [open, setOpen] = useState(false);
   const [notifications, setNotifications] = useState([]);
-  // console.log(notifications);
+  const [sortedNotification, setSortedNotification] = useState([]);
+  console.log(sortedNotification);
   const doctorid = localStorage.getItem("doctor_id");
   const { logout } = useAuth();
   const navigate = useNavigate();
@@ -65,6 +66,67 @@ function DashboardNav({ setSearchText }) {
       clearInterval(interval);
     };
   }, []);
+  useEffect(() => {
+    let NewNotifications = [];
+    for (let j = 0; j < notifications.length; j++) {
+      // console.log(j);
+      const item = notifications[j];
+      const date = new Date(item.created).toDateString();
+      // console.log(date.toDateString());
+      let result = NewNotifications.filter((i) => {
+        // console.log(i.created);
+        return i.date === date;
+      });
+      console.log(result);
+      if (result.length > 0) {
+        console.log("if");
+        NewNotifications = NewNotifications.map((i) => {
+          if (i.date === date) {
+            return { date: date, data: [...i.data, item] };
+          } else {
+            return item;
+          }
+        });
+      } else {
+        console.log("else");
+        NewNotifications.push({ date: date, data: [item] });
+      }
+    }
+    // notifications.map((item) => {
+    //   const date = new Date(item.created).toDateString();
+    //   // console.log(date.toDateString());
+    //   let result = NewNotifications.filter((i) => {
+    //     console.log(i.created);
+    //     return new Date(i.created).toDateString() === date;
+    //   });
+    //   console.log(result);
+    //   if (result.length > 0) {
+    //     console.log("if");
+    //     NewNotifications.map((i) => {
+    //       if (new Date(i.date).toDateString() === date) {
+    //         return { date: date, data: [...i.data, item] };
+    //       }
+    //     });
+    //   } else {
+    //     console.log("else");
+    //     NewNotifications.push({ date: date, data: [item] });
+    //   }
+    // });
+    console.log(NewNotifications);
+    setSortedNotification(NewNotifications);
+  }, [notifications]);
+  // NewNotifications = []
+  // Notification.map((item)=>{
+  //     date = getDateString(item.created)
+  //     let result = NewNotifications.filter((i)=> return i.date===date)
+  //     if(result.length){
+  //         NewNotifications =NewNotifications.map((i)=> if(i.date===date){
+  //             return {date: i.date, data: [...i.data, item]}
+  //         })
+  //     } else {
+  //         NewNotifications.push({date:date, data: [item]})
+  //     }
+  // })
   const checkNotifications = async () => {
     await fetch(
       `https://reservefree-backend.herokuapp.com/notify/check?user=${doctorid}`
@@ -89,8 +151,28 @@ function DashboardNav({ setSearchText }) {
       .then((data) => {
         if (data) {
           setNotifications(data.reverse());
-          // console.log(data);
+          // console.log(data[0].created);
         }
+      });
+  };
+  const clickOut = async (e) => {
+    setOpen(false);
+    // console.log("hepe");
+    await fetch(
+      `https://reservefree-backend.herokuapp.com/notify/update?user=${doctorid}&read=true`,
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        // alert("a");
+        getNotifications();
       });
   };
 
@@ -123,13 +205,21 @@ function DashboardNav({ setSearchText }) {
           </div>
         )}
         {open && (
-          <div className="notification_container">
-            <div className="notification_header">
-              <h3>Notifications</h3>
+          <ClickOutHandler onClickOut={clickOut}>
+            <div className="notification_container">
+              <div className="notification_header">
+                <h3>Notifications</h3>
+              </div>
+              {notifications &&
+                notifications.map((item, index) => (
+                  <Notification
+                    key={index}
+                    item={item}
+                    setSearchId={setSearchId}
+                  />
+                ))}
             </div>
-            {notifications &&
-              notifications.map((item) => <Notification item={item} />)}
-          </div>
+          </ClickOutHandler>
         )}
         {/* <img src={chaticon} alt="messages" className="header--icon" /> */}
         <span className="header--item dropdown">

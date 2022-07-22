@@ -1,11 +1,13 @@
 import "./Requests.css";
 import accept from "../../../assets/images/accept.png";
 import { useEffect, useState } from "react";
-
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
+import { useRef } from "react";
 
-function RequestCard({ item, handleLoading }) {
-  // console.log(item);
+function RequestCard({ item, handleLoading, searchId }) {
+  const [active, setActive] = useState(false);
+  const myRef = useRef(null);
+  // console.log(item._id);
   const date = new Date(item.appointmentSlot);
   var gsDayNames = [
     " ",
@@ -43,10 +45,32 @@ function RequestCard({ item, handleLoading }) {
       .then((data) => console.log(data));
     handleLoading("true");
   };
-
+  // const [id, setId] = useState(localStorage.getItem("notification_id"));
+  useEffect(() => {
+    console.log("1");
+    if (searchId && searchId == item._id) {
+      console.log("2");
+      setActive(true);
+      // const div = document.getElementsByClassName("selected");
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      if (myRef.current) {
+        console.log("ref");
+        myRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    } else {
+      // setActive(false);
+    }
+    setTimeout(() => {
+      setActive(false);
+      // setId(null);
+    }, 3000);
+  }, [searchId]);
   const initials = item.detials.name.charAt(0).toUpperCase();
   return (
-    <div className="request--card">
+    <div
+      ref={myRef}
+      className={active ? "request--card selected" : "request--card"}
+    >
       <div className="request--card--profile">{initials}</div>
       <div className="request--card--detials">
         <span className="request--card--name">{item.detials.name}</span>
@@ -97,8 +121,9 @@ function RequestCard({ item, handleLoading }) {
   );
 }
 
-function Requests({ handleLoading, change, searchText }) {
+function Requests({ handleLoading, change, searchText, searchId }) {
   const [pending, setPending] = useState([]);
+  // console.log(pending);
   const [filterReqeuestData, setFilterReqeuestData] = useState([]);
 
   // console.log(pending);
@@ -146,22 +171,22 @@ function Requests({ handleLoading, change, searchText }) {
         setPending(data);
         setFilterReqeuestData(data);
       });
-    let interval = setInterval(() => {
-      fetch(
-        `https://reservefree-backend.herokuapp.com/get/appointments?docterId=${id}&confirmation=PENDING`,
-        {
-          method: "GET",
-        }
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setPending(data);
-          setFilterReqeuestData(data);
-        });
-    }, 3000);
-    return () => {
-      clearInterval(interval);
-    };
+    // let interval = setInterval(() => {
+    //   fetch(
+    //     `https://reservefree-backend.herokuapp.com/get/appointments?docterId=${id}&confirmation=PENDING`,
+    //     {
+    //       method: "GET",
+    //     }
+    //   )
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //       setPending(data);
+    //       setFilterReqeuestData(data);
+    //     });
+    // }, 3000);
+    // return () => {
+    //   clearInterval(interval);
+    // };
   }, [id]);
   useEffect(() => {
     requestFilter();
@@ -263,11 +288,12 @@ function Requests({ handleLoading, change, searchText }) {
         )}
       </div>
       <div className="requests--body">
-        {pending.reverse().map((item) => (
+        {pending.map((item) => (
           <RequestCard
             handleLoading={handleLoading}
             key={item._id}
             item={item}
+            searchId={searchId}
           />
         ))}
       </div>

@@ -1,11 +1,28 @@
 .notification_card {
-  padding: 10px 20px;
-  background-color: rgba(230, 235, 255, 0.6);
-  margin: 20px;
+  padding: 7px 10px;
+  /* background-color: rgba(230, 235, 255, 0.6); */
+  margin: 20px 15px 20px 15px;
   border-radius: 4px;
+  position: relative;
+  cursor: pointer;
 }
+.notification_card.new_notifier {
+  background-color: rgba(230, 235, 255, 0.6);
+  margin: 20px 10px 20px 20px;
+}
+.notification_card.new_notifier::before {
+  content: "●";
+  position: absolute;
+  color: #194af5;
+  left: -3%;
+  top: 25%;
+}
+
 .notification_card h2 {
   font-size: 14px;
+  max-width: 300px;
+}
+.h2_wrao {
 }
 .booke_name {
   font-weight: 700;
@@ -13,4 +30,16 @@
 }
 .notification_card h2 {
   font-size: 14px;
+}
+.initials_box {
+  margin-right: 10px;
+}
+.notification_time {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 19px;
+  margin-top: 10px;
+  color: #b7b7b7;
+  min-width: 60px;
+  margin-left: 10px;
 }

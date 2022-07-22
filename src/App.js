@@ -23,7 +23,14 @@ function App() {
     <AuthProvider>
       <Routes>
         {/* Dashboard Routes */}
-        <Route path="/" element={<Dashboard />}>
+        <Route
+          path="/*"
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        >
           <Route index element={<Monitor />} />
           <Route path="monitor" element={<Monitor />} />
           <Route path="clinicscreen" element={<Clinicscreen />} />
@@ -34,22 +41,79 @@ function App() {
           <Route path="tabs/:id" element={<ClinicTabs />} />
         </Route>
         {/* Prescrition Routes */}
-        <Route path="/prescription/:id" element={<Prescriptions />} />
+        <Route
+          path="/prescription/:id"
+          element={
+            <PrivateRoute>
+              <Prescriptions />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/createappointment"
-          element={<CreateAppointment />}
+          element={
+            <PrivateRoute>
+              <CreateAppointment />
+            </PrivateRoute>
+          }
         ></Route>
         {/* Other Routes */}
         <Route path="/login" element={<Login />} />
-        <Route path="/clinicdetails" element={<ClinicStepper step="0" />} />
-        <Route path="/addslots" element={<ClinicStepper step="2" />} />
-        <Route path="/editslots/:id" element={<UpdateSlots />} />
-        <Route path="editclinic/:id" element={<EditClinic />} />
-        <Route path="editpatient/:id" element={<EditPatient />} />
-        <Route path="createslot/:id" element={<CreateSlot />} />
+        <Route
+          path="/clinicdetails"
+          element={
+            <PrivateRoute>
+              <ClinicStepper step="0" />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/addslots"
+          element={
+            <PrivateRoute>
+              <ClinicStepper step="2" />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/editslots/:id"
+          element={
+            <PrivateRoute>
+              <UpdateSlots />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="editclinic/:id"
+          element={
+            <PrivateRoute>
+              <EditClinic />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="editpatient/:id"
+          element={
+            <PrivateRoute>
+              <EditPatient />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="createslot/:id"
+          element={
+            <PrivateRoute>
+              <CreateSlot />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="updatedashboardslots/:clinicid/:slotid"
-          element={<UpdateDashboardSlots />}
+          element={
+            <PrivateRoute>
+              <UpdateDashboardSlots />
+            </PrivateRoute>
+          }
         />
       </Routes>
     </AuthProvider>

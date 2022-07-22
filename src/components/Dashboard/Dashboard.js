@@ -5,14 +5,16 @@ import "./Dashboard.css";
 import DashboardNav from "./DashboardNav/DashboardNav";
 const Dashboard = () => {
   const [searchText, setSearchText] = useState("");
+  const [searchId, setSearchId] = useState("");
+
   // console.log(searchText);
 
   return (
     <div className="dashboard">
       <Sidebar />
       <div className="dashboard_outlet">
-        <DashboardNav setSearchText={setSearchText} />
-        <Outlet context={[searchText]} />
+        <DashboardNav setSearchText={setSearchText} setSearchId={setSearchId} />
+        <Outlet context={[searchText, searchId]} />
       </div>
     </div>
   );

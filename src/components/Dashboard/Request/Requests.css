@@ -3,7 +3,8 @@
   border-radius: 16px;
   background: #fff;
   height: 26em;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  overflow: hidden;
 }
 .responsive-calendar {
   /* z-index: 80 !important; */
@@ -20,8 +21,39 @@
   top: 35%;
   /* background-color: red; */
 }
+.requests--container::-webkit-scrollbar {
+  width: 5px;
+  max-height: 10px !important;
+  background-color: #194af5;
+}
+
 .requests--container::-webkit-scrollbar-thumb {
-  background: transparent !important;
+  border-radius: 0px !important;
+  background-color: pink;
+}
+.requests--container::-webkit-scrollbar {
+  /* width: 5px;
+  height: 5px; */
+  background-color: pink;
+  max-height: 50px !important;
+}
+
+/* Track */
+.requests--container::-webkit-scrollbar-track {
+  background: red;
+  max-height: 100px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #eaeaea;
+  /* background: rgba(0, 0, 0, 0.1); */
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #64b5f6;
 }
 .requests--header {
   padding: 20px;
@@ -31,8 +63,6 @@
   position: sticky;
   top: 0;
   display: flex;
-  position: relative;
-  /* justify-content: space-around; */
 }
 
 .requests--title {
@@ -59,6 +89,9 @@
   fill: #000;
 }
 .requests--body {
+  overflow-y: scroll;
+  max-width: 100%;
+  max-height: 100%;
   padding: 0 1em;
 }
 .request--card--gender,
@@ -76,7 +109,9 @@
   align-items: center;
   justify-content: space-evenly;
 }
-
+.request--card.selected {
+  background-color: #e6ebff;
+}
 .request--card--profile {
   font-weight: 500;
   font-size: 14px;

@@ -4,7 +4,6 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
 const ClickOutHandler = require("react-onclickout");
 const AppointmentListForm = () => {
   const [confirmedData, setConfirmedData] = useState([]);
@@ -157,36 +156,8 @@ const AppointmentListForm = () => {
     setOpen(false);
   };
   return (
-    <div>
-      <div className="d-flex justify-content-end align-items-center legal_topBar">
-        {startDate && endDate && (
-          <p className="legal_reset_btn" onClick={reset}>
-            Reset
-          </p>
-        )}
-        <p onClick={() => setOpen(!open)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-            className={
-              !startDate && !endDate
-                ? "legal_filter_input_icon"
-                : "legal_filter_input_icon activated"
-            }
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-            />
-          </svg>
-        </p>
-
+    <div className="">
+      <div className="d-flex justify-content-start align-items-center legal_topBar">
         {open && (
           <ClickOutHandler onClickOut={clickOut}>
             <DatePicker
@@ -201,14 +172,6 @@ const AppointmentListForm = () => {
           </ClickOutHandler>
         )}
 
-        {/* <DatePicker
-          value={selectedDay}
-          onChange={setSelectedDay}
-          renderInput={renderCustomInput}
-          className="date_filter"
-          calendarRangeBetweenClassName="calendarRange"
-        /> */}
-        {/* <DateRangePicker ranges={[selectionRange]} onChange={handleSelect} /> */}
         <div class="export_dropdown">
           <p
             class="btn btn-primary dropdown-toggle export_btn "
@@ -237,38 +200,71 @@ const AppointmentListForm = () => {
             </li>
           </ul>
         </div>
+
+        <button className="date_filter_btn" onClick={() => setOpen(!open)}>
+          Filter By Date
+          {/* <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth="2"
+            className={
+              !startDate && !endDate
+                ? "legal_filter_input_icon"
+                : "legal_filter_input_icon activated"
+            }
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+            />
+          </svg> */}
+        </button>
+        {startDate && endDate && (
+          <p className="legal_reset_btn" onClick={reset}>
+            Reset
+          </p>
+        )}
       </div>
-      <table className="appointment_table">
-        <thead>
-          <tr>
-            <th className="date_row">Date</th>
-            <th className="serial_row">Sl No.</th>
-            <th className="name_row">Patient's Name</th>
-            <th>
-              Nature of professional services rendered, i.e., general
-              consultation, surgery, injection, visit, etc.
-            </th>
-            <th>Fees received</th>
-            <th className="receipt_row">Date of receipt </th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredConfirmedData.map((item, index) => (
-            <tr key={item._id}>
-              <td>{item?.slot?.date}</td>
-              <td className="text-center">{index + 1}</td>
-              <td>{item?.detials?.name}</td>
-              <td>{item.prescription.generalAdvice}</td>
-              <td>{item?.fees}</td>
-              <td>
-                {item.status.paymentDate.length
-                  ? item.status.paymentDate
-                  : "Paid On Visit"}
-              </td>
+      <div className="legal_table">
+        <table className="appointment_table">
+          <thead>
+            <tr>
+              <th className="date_row">Date</th>
+              <th className="serial_row">S.No</th>
+              <th className="name_row">Patient's Name</th>
+              <th>
+                Nature of professional services,{" "}
+                <span className="small_text">
+                  (i.e. general consultation, surgery, injection, visit, etc.)
+                </span>
+              </th>
+              <th>Fees received</th>
+              <th className="receipt_row">Date of receipt </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {filteredConfirmedData.map((item, index) => (
+              <tr key={item._id}>
+                <td>{item?.slot?.date}</td>
+                <td className="text-center">{index + 1}</td>
+                <td>{item?.detials?.name}</td>
+                <td>{item.prescription.generalAdvice}</td>
+                <td>{item?.fees}</td>
+                <td>
+                  {item.status.paymentDate.length
+                    ? item.status.paymentDate
+                    : "Paid On Visit"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

@@ -9,8 +9,8 @@ const Monitor = () => {
   const handleLoading = (value) => {
     setChange(value);
   };
-  const [searchText] = useOutletContext();
-
+  const [searchText, searchId] = useOutletContext();
+  console.log(searchText, searchId);
   return (
     <div className="monitor">
       <Stats />
@@ -19,6 +19,7 @@ const Monitor = () => {
           handleLoading={handleLoading}
           change={change}
           searchText={searchText}
+          searchId={searchId}
         />
         <Appointments change={change} searchText={searchText} />
       </div>

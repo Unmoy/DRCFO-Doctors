@@ -1,17 +1,25 @@
 .appointment_table {
   border-collapse: collapse;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.legal_table {
   width: 92%;
   margin: auto;
 }
-
+.legal_table {
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+}
 .appointment_table td,
 .appointment_table th {
-  border: 1px solid #ddd;
+  /* border-radius: 10px; */
+  border: 1px solid #d6d6d6;
   padding: 13px;
   font-size: 14px;
 }
 
-.appointment_table tr:nth-child(even) {
+.appointment_table tr {
   background-color: #fff;
 }
 
@@ -23,8 +31,12 @@
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #e6ebff;
+  background: rgba(238, 242, 255, 0.72);
   color: #000;
+  font-weight: 500;
+}
+.small_text {
+  font-size: 12px;
 }
 .name_row {
   width: 12em;
@@ -46,15 +58,16 @@
   margin-top: 10px;
 }
 .export_dropdown {
-  margin-right: 3.4em;
+  margin-right: 1em;
+  margin-left: 3.4em;
 }
 .date_filter {
   z-index: 1;
 }
 
 .legal_reset_btn {
-  margin-bottom: 12px;
-  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-left: 15px;
   cursor: pointer;
   font-size: 12px;
   text-decoration: underline;
@@ -74,18 +87,29 @@
 }
 .calender_range {
   position: absolute !important;
-  right: 5%;
-  top: 3.7em;
+  left: 5%;
+  top: 4em;
 }
 
 .legal_filter_input_icon {
   /* position: absolute; */
   /* right: 10em; */
-  margin-right: 20px;
+  /* margin-right: 20px; */
 }
 .legal_filter_input_icon path {
-  fill: transparent;
+  /* fill: transparent; */
 }
 .legal_filter_input_icon.activated path {
   color: #194af5;
+}
+.date_filter_btn {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+  color: #194af5;
+  background: #e6ebff;
+  border-radius: 4px;
+  border: none;
+  padding: 7px 10px;
+  margin-bottom: 5px;
 }

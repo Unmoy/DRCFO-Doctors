@@ -68,33 +68,26 @@
   fill: #194af5;
 }
 
-path {
+.sidebar_menu_item path {
   fill: #b7b7b7;
 }
 
 .sidemenu_btn {
   position: absolute;
   bottom: 2em;
-  margin: 0 5%;
-  padding: 0.4em;
+  margin-left: 25px;
   width: 80%;
-  text-align: center;
   font-weight: 600;
-  color: #194af5;
-  background: #ffffff;
+  font-size: 14px;
+  color: #f8f8f8;
+  background: #194af5;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
   border-radius: 80px;
-  height: 2em;
-  display: table;
+  padding: 8px;
   cursor: pointer;
+  text-align: center;
 }
 
-.sidemenu_btn span {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.sidemenu_btn:hover {
-  background: #fefefe;
-  transform: translateY(-1px) scale(1.01);
+.sidemenu_btn:active {
+  transform: scale(0.99);
 }
