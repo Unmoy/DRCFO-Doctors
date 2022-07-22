@@ -10,7 +10,7 @@ const Monitor = () => {
     setChange(value);
   };
   const [searchText, searchId] = useOutletContext();
-  console.log(searchText, searchId);
+  // console.log(searchText, searchId);
   return (
     <div className="monitor">
       <Stats />

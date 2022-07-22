@@ -19,7 +19,7 @@ function DashboardNav({ setSearchText, setSearchId }) {
   const [open, setOpen] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [sortedNotification, setSortedNotification] = useState([]);
-  console.log(sortedNotification);
+  // console.log(sortedNotification);
   const doctorid = localStorage.getItem("doctor_id");
   const { logout } = useAuth();
   const navigate = useNavigate();
@@ -67,53 +67,36 @@ function DashboardNav({ setSearchText, setSearchId }) {
     };
   }, []);
   useEffect(() => {
-    let NewNotifications = [];
-    for (let j = 0; j < notifications.length; j++) {
-      // console.log(j);
-      const item = notifications[j];
-      const date = new Date(item.created).toDateString();
-      // console.log(date.toDateString());
-      let result = NewNotifications.filter((i) => {
-        // console.log(i.created);
-        return i.date === date;
-      });
-      console.log(result);
-      if (result.length > 0) {
-        console.log("if");
-        NewNotifications = NewNotifications.map((i) => {
-          if (i.date === date) {
-            return { date: date, data: [...i.data, item] };
-          } else {
-            return item;
-          }
+    if (notifications.length > 0) {
+      let NewNotifications = [];
+      for (let j = 0; j < notifications.length; j++) {
+        // console.log(j);
+        const item = notifications[j];
+        const date = new Date(item.created).toDateString();
+        // console.log(date.toDateString());
+        let result = NewNotifications.filter((i) => {
+          // console.log(i.created);
+          return i.date === date;
         });
-      } else {
-        console.log("else");
-        NewNotifications.push({ date: date, data: [item] });
+        // console.log(result);
+        if (result.length > 0) {
+          console.log("if", date, result);
+          NewNotifications = NewNotifications.map((i) => {
+            if (i.date === date) {
+              console.log("if1", date);
+              return { date: date, data: [...i.data, item] };
+            } else {
+              return i;
+            }
+          });
+        } else {
+          console.log("else", date, item);
+          NewNotifications.push({ date: date, data: [item] });
+        }
       }
+      console.log("Sorted", NewNotifications);
+      setSortedNotification(NewNotifications);
     }
-    // notifications.map((item) => {
-    //   const date = new Date(item.created).toDateString();
-    //   // console.log(date.toDateString());
-    //   let result = NewNotifications.filter((i) => {
-    //     console.log(i.created);
-    //     return new Date(i.created).toDateString() === date;
-    //   });
-    //   console.log(result);
-    //   if (result.length > 0) {
-    //     console.log("if");
-    //     NewNotifications.map((i) => {
-    //       if (new Date(i.date).toDateString() === date) {
-    //         return { date: date, data: [...i.data, item] };
-    //       }
-    //     });
-    //   } else {
-    //     console.log("else");
-    //     NewNotifications.push({ date: date, data: [item] });
-    //   }
-    // });
-    console.log(NewNotifications);
-    setSortedNotification(NewNotifications);
   }, [notifications]);
   // NewNotifications = []
   // Notification.map((item)=>{
