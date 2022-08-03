@@ -1,0 +1,60 @@
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.vital_modal label {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #232526;
+  margin-bottom: 10px;
+}
+.bp_input_box {
+  width: 15em;
+  margin: 15px 0;
+  /* background-color: #a4a4a4; */
+}
+.vitals_input_box {
+  /* background-color: red; */
+  max-width: 15em;
+  margin: 15px 0;
+  /* background-color: red; */
+}
+.vitals_input_box input {
+  background: #ffffff;
+  border: 1px solid #a4a4a4;
+  border-radius: 4px;
+  padding: 5px;
+  max-width: 12em;
+}
+.vitals_input_box input:focus {
+  outline: 1px solid #194af5;
+}
+.bp_box {
+  /* background-color: aqua; */
+  display: flex;
+}
+.bp_input {
+  max-width: 85px;
+  background: #ffffff;
+  border: 1px solid #a4a4a4;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 0 5px;
+}
+.vitals_tab {
+  /* margin-left: 30px; */
+}
+.vitals_input_box_invisible {
+  min-width: 15em;
+  margin: 15px 0;
+}
+.vitals_submit_cta {
+  background-color: #194af5;
+  padding: 7px;
+  width: 150px;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  margin-top: 30px;
+}

@@ -8,8 +8,7 @@ import TextField from "@mui/material/TextField";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { NavLink, useLocation } from "react-router-dom";
-import { ReactSearchAutocomplete } from "react-search-autocomplete";
+import PatientVitals from "./PatientVitals";
 const drugTemplate = {
   drugName: "",
   unit: "",
@@ -37,7 +36,7 @@ const Prescriptions = () => {
   const [disable, setDisable] = useState(false);
   const textInput = useRef(null);
   const [focusName, setFocusName] = useState("");
-  const location = useLocation();
+  const [VitalsModalIsOpen, setVitalsModalOpen] = useState(false);
   const complainref = useRef(null);
   const diagnosisref = useRef(null);
   const treatmentref = useRef(null);
@@ -48,7 +47,8 @@ const Prescriptions = () => {
   const [section, setSection] = useState("");
   const [drugName, setDrugName] = useState("");
   const [drugSetIndex, setDrugSetIndex] = useState(null);
-  console.log(drugName);
+  const [vitalsData, setVitalsData] = useState({});
+  // console.log(vitalsData);
   function openModal() {
     setIsOpen(true);
   }
@@ -63,7 +63,7 @@ const Prescriptions = () => {
       });
   }, [id]);
   useEffect(() => {
-    console.log(drugName);
+    // console.log(drugName);
     if (drugName.length > 0) {
       fetch(
         `https://reservefree-backend.herokuapp.com/search?query=${drugName}&search=drug`
@@ -137,10 +137,10 @@ const Prescriptions = () => {
     );
     setTestList(updatedTestList);
   };
-  const handleComplain = (e) => {
-    e.preventDefault();
-    setComplain(e.target.value);
-  };
+  // const handleComplain = (e) => {
+  //   e.preventDefault();
+  //   setComplain(e.target.value);
+  // };
   const handleTreatment = (e) => {
     e.preventDefault();
     setTreatment(e.target.value);
@@ -245,12 +245,134 @@ const Prescriptions = () => {
       adviceref.current.focus();
     }
   }, [section]);
-  console.log(drugList);
-  console.log(drugSet);
+  const [complaintags, setComplainTags] = React.useState([]);
+  const [diagnosetags, setDiagnoseTags] = React.useState([]);
+  const [treatmenttags, setTreatmentTags] = React.useState([]);
+
+  const removeDiagnoseTags = (indexToRemove) => {
+    setDiagnoseTags([
+      ...diagnosetags.filter((_, index) => index !== indexToRemove),
+    ]);
+  };
+  const addDiagnoseTags = (event) => {
+    if (event.code == "Enter" && event.target.value.length > 1) {
+      setDiagnoseTags([...diagnosetags, event.target.value]);
+      event.target.value = "";
+    }
+  };
+  const updateDiagnoseTagsHandler = (e) => {
+    if (diagnosetags.length > 0 && e.target.value == "") {
+      const copyOfTags = [...diagnosetags];
+      copyOfTags.pop();
+      setDiagnoseTags(copyOfTags);
+    } else {
+      // console.log("coreect nedded");
+    }
+  };
+  const getDiagnoseTagData = (i, tag) => {
+    let text = tag.replace(/[\r\n]/gm, "");
+    console.log(text);
+    const copyOfTags = [...diagnosetags.filter((_, index) => index !== i)];
+    setDiagnoseTags(copyOfTags);
+    // console.log(copyOfTags);
+    if (diagnosisref.current) {
+      diagnosisref.current.value = text;
+      diagnosisref.current.focus();
+    }
+  };
+  const setDiagnoseFocus = () => {
+    if (diagnosisref.current) {
+      diagnosisref.current.focus();
+    }
+  };
+  const removeTreatmentTags = (indexToRemove) => {
+    setTreatmentTags([
+      ...treatmenttags.filter((_, index) => index !== indexToRemove),
+    ]);
+  };
+  const addTreatmentTags = (event) => {
+    if (event.code == "Enter" && event.target.value.length > 1) {
+      setTreatmentTags([...treatmenttags, event.target.value]);
+      event.target.value = "";
+    }
+  };
+  const updateTreatmentTagsHandler = (e) => {
+    if (treatmenttags.length > 0 && e.target.value == "") {
+      // console.log(e);
+      const copyOfTags = [...treatmenttags];
+      copyOfTags.pop();
+      setTreatmentTags(copyOfTags);
+    } else {
+      // console.log("coreect nedded");
+    }
+  };
+  const getTreatmentTagData = (i, tag) => {
+    let text = tag.replace(/[\r\n]/gm, "");
+    console.log(text);
+    const copyOfTags = [...treatmenttags.filter((_, index) => index !== i)];
+    setTreatmentTags(copyOfTags);
+    // console.log(copyOfTags);
+    if (treatmentref.current) {
+      treatmentref.current.value = text;
+      treatmentref.current.focus();
+    }
+  };
+  const setTreatmentFocus = () => {
+    if (treatmentref.current) {
+      treatmentref.current.focus();
+    }
+  };
+  const removeTags = (indexToRemove) => {
+    setComplainTags([
+      ...complaintags.filter((_, index) => index !== indexToRemove),
+    ]);
+  };
+  const addTags = (event) => {
+    // console.log(event.target.value.length);
+    if (event.code == "Enter" && event.target.value.length > 1) {
+      setComplainTags([...complaintags, event.target.value]);
+      event.target.value = "";
+    }
+  };
+  const updateTagsHandler = (e) => {
+    // console.log(e.target.value.length);
+    if (complaintags.length > 0 && e.target.value == "") {
+      // console.log(e);
+      const copyOfTags = [...complaintags];
+      copyOfTags.pop();
+      setComplainTags(copyOfTags);
+    } else {
+      // console.log("coreect nedded");
+    }
+  };
+  const getTagData = (i, tag) => {
+    let text = tag.replace(/[\r\n]/gm, "");
+    console.log(text);
+    const copyOfTags = [...complaintags.filter((_, index) => index !== i)];
+    setComplainTags(copyOfTags);
+    // console.log(copyOfTags);
+    if (complainref.current) {
+      complainref.current.value = text;
+      complainref.current.focus();
+    }
+  };
+  const setcomplainFocus = () => {
+    if (complainref.current) {
+      complainref.current.focus();
+    }
+  };
 
   return (
     <>
-      <Topbar docterId={docterId} loadTemplate={loadTemplate} />
+      <Topbar
+        docterId={docterId}
+        loadTemplate={loadTemplate}
+        setIsOpen={setVitalsModalOpen}
+        modalIsOpen={VitalsModalIsOpen}
+        setVitalsData={setVitalsData}
+        vitalsData={vitalsData}
+        patient={patient}
+      />
       <div>
         <SideNav
           patient={patient}
@@ -261,46 +383,186 @@ const Prescriptions = () => {
         <form onSubmit={submitbtn} autoComplete="off">
           <div className="prescription_outlet">
             <div className="prescription_container">
+              {vitalsData.weight ||
+              vitalsData.bp_input1 ||
+              vitalsData.bp_input2 ||
+              vitalsData.diabetes ||
+              vitalsData.height ||
+              vitalsData.hip ||
+              vitalsData.SPO2 ||
+              vitalsData.pulse ||
+              vitalsData.temperature ? (
+                <>
+                  <label className="vitals_header">
+                    Vitals
+                    <span
+                      className="vitals_edit_cta"
+                      onClick={() => setVitalsModalOpen(true)}
+                    >
+                      (edit)
+                    </span>
+                  </label>
+                  <PatientVitals vitalsData={vitalsData} />
+                </>
+              ) : null}
+
               <div className="prescription_content" id="complain">
                 <label htmlFor="complain">Complain</label>
-                <textarea
-                  id="complain"
-                  name="complain"
-                  cols="120"
-                  rows="7"
-                  className="prescription_textarea"
-                  onChange={handleComplain}
-                  value={complain}
-                  required
-                  onFocus={handleFocus}
-                  ref={complainref}
-                ></textarea>
+                <div className="tags-input" onClick={setcomplainFocus}>
+                  <ul id="tags">
+                    {complaintags.map((tag, index) => (
+                      <li key={index} className="tag">
+                        <span
+                          className="tag-title"
+                          onClick={() => getTagData(index, tag)}
+                        >
+                          {tag}
+                        </span>
+                        <span
+                          className="tag-close-icon"
+                          onClick={() => removeTags(index)}
+                        >
+                          <svg
+                            width="13"
+                            height="13"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </span>
+                      </li>
+                    ))}
+                    <li>
+                      <textarea
+                        id="complain"
+                        name="complain"
+                        cols="50"
+                        rows="1"
+                        className="complain_textarea"
+                        onKeyUp={(event) =>
+                          event.code == "Enter" ? addTags(event) : null
+                        }
+                        onKeyDown={(e) =>
+                          e.code == "Backspace" ? updateTagsHandler(e) : null
+                        }
+                        required
+                        onFocus={handleFocus}
+                        ref={complainref}
+                      ></textarea>
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div className="prescription_content" id="diagnosis">
                 <label htmlFor="diagnosis">Diagnosis</label>
-                <textarea
-                  name="diagnosis"
-                  cols="120"
-                  rows="7"
-                  className="prescription_textarea"
-                  onChange={handleDiagnosis}
-                  value={diagnosis}
-                  onFocus={handleFocus}
-                  ref={diagnosisref}
-                ></textarea>
+                <div className="tags-input" onClick={setDiagnoseFocus}>
+                  <ul id="tags">
+                    {diagnosetags.map((tag, index) => (
+                      <li key={index} className="tag">
+                        <span
+                          className="tag-title"
+                          onClick={() => getDiagnoseTagData(index, tag)}
+                        >
+                          {tag}
+                        </span>
+                        <span
+                          className="tag-close-icon"
+                          onClick={() => removeDiagnoseTags(index)}
+                        >
+                          <svg
+                            width="15"
+                            height="15"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </span>
+                      </li>
+                    ))}
+                    <li>
+                      <textarea
+                        name="diagnosis"
+                        id="diagnosis"
+                        cols="50"
+                        rows="1"
+                        className="diagnose_textarea"
+                        onFocus={handleFocus}
+                        ref={diagnosisref}
+                        onKeyUp={(e) =>
+                          e.code == "Enter" ? addDiagnoseTags(e) : null
+                        }
+                        onKeyDown={(e) =>
+                          e.code == "Backspace"
+                            ? updateDiagnoseTagsHandler(e)
+                            : null
+                        }
+                      ></textarea>
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div className="prescription_content" id="treatment">
                 <label htmlFor="treatment">Treatment</label>
-                <textarea
-                  name="treatment"
-                  cols="120"
-                  rows="7"
-                  className="prescription_textarea"
-                  onChange={handleTreatment}
-                  value={treatment}
-                  onFocus={handleFocus}
-                  ref={treatmentref}
-                ></textarea>
+                <div className="tags-input" onClick={setTreatmentFocus}>
+                  <ul id="tags">
+                    {treatmenttags.map((tag, index) => (
+                      <li key={index} className="tag">
+                        <span
+                          className="tag-title"
+                          onClick={() => getTreatmentTagData(index, tag)}
+                        >
+                          {tag}
+                        </span>
+                        <span
+                          className="tag-close-icon"
+                          onClick={() => removeTreatmentTags(index)}
+                        >
+                          <svg
+                            width="15"
+                            height="15"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </span>
+                      </li>
+                    ))}
+                    <li>
+                      <textarea
+                        name="treatment"
+                        id="treatment"
+                        cols="50"
+                        rows="1"
+                        className="treatment_textarea"
+                        onFocus={handleFocus}
+                        ref={treatmentref}
+                        onKeyUp={(e) =>
+                          e.code == "Enter" ? addTreatmentTags(e) : null
+                        }
+                        onKeyDown={(e) =>
+                          e.code == "Backspace"
+                            ? updateTreatmentTagsHandler(e)
+                            : null
+                        }
+                      ></textarea>
+                    </li>
+                  </ul>
+                </div>
               </div>
               <div className="prescription_content" id="tests">
                 <label htmlFor="test">Test</label>

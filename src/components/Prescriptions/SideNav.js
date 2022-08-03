@@ -1,19 +1,37 @@
 import React, { useEffect, useState } from "react";
 import "./SideNav.css";
 import userjpg from "../../assets/images/user.jpg";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 const SideNav = ({ patient, focusName, setSection, section }) => {
   const location = useLocation();
-  // console.log(location.hash);
+  console.log(patient._id);
+  const navigate = useNavigate();
+  const navigatetobills = () => {
+    navigate(`/patientbills/${patient._id}`);
+  };
   return (
     <div className="sidenav">
       <div className="sidenav_brand">
         <img src={userjpg} alt="" className="sidenav_user_image" />
-        <div>
+        <div className="">
           <h1 className="side_brand_name">{patient?.detials?.name}</h1>
-          <p className="side_brand_age">Age : {patient?.detials?.age}</p>
+          <p className="side_brand_age">
+            {patient?.detials?.gender}, {patient?.detials?.age} years
+          </p>
+          <p className="side_brand_number">{patient?.detials?.phone}</p>
         </div>
       </div>
+      <button className="medical_history_cta" onClick={navigatetobills}>
+        Medical History
+        <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+          <path
+            fillRule="evenodd"
+            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+            clipRule="evenodd"
+          />
+        </svg>
+      </button>
+      <div className="bottom_bar"></div>
       <div className="sidebar_menu">
         {/* Dashboard */}
         <div

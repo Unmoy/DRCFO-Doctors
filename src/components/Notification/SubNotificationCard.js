@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Skeleton from "@mui/material/Skeleton";
 
-const SubNotificationCard = ({ note, setSearchId }) => {
+const SubNotificationCard = ({ note, setSearchId, setOpen }) => {
   const [notifications, setNotifications] = useState({});
   // console.log(note.created);
   const date = new Date(note.created);
@@ -24,6 +24,7 @@ const SubNotificationCard = ({ note, setSearchId }) => {
   const initials = notifications?.detials?.name.charAt(0).toUpperCase();
   const sendPatientId = (value) => {
     setSearchId(value);
+    setOpen(false);
   };
   return (
     <div

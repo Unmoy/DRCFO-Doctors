@@ -1,0 +1,263 @@
+.bill {
+  background: #f6f6f7;
+  height: 200vh;
+}
+.detail_col_image img {
+  width: 80px;
+}
+.bills_wrapper {
+  /* display: flex; */
+  /* width: 15em; */
+  background-color: #fff;
+  width: 80%;
+  margin: 0 auto;
+}
+.detail_col_image {
+  /* flex: 0; */
+  /* display: inline-block; */
+  margin-right: 50px;
+  margin-left: 10px;
+}
+
+.divider {
+  border-top: 1px solid #e6ebed;
+  margin: 0 30px;
+  margin-bottom: 30px;
+}
+.confirm_header h1 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29px;
+  color: #232526;
+  margin-bottom: 20px;
+}
+.bills_content h6 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #b7b7b7;
+}
+.bills_content div {
+  width: 12em;
+  /* background-color: bisque; */
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #232526;
+}
+.detail_col_2 {
+  margin-right: 100px;
+}
+.detail_col_4 {
+  margin-left: -30px;
+}
+.detail_col_3 {
+  margin-right: 40px;
+}
+.services_box {
+  margin-bottom: 30px;
+}
+.services_box ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  max-width: 500px;
+}
+.services_box li {
+  display: flex;
+  justify-content: flex-start;
+  margin: 20px 0;
+  /* background-color: #194af5; */
+}
+.services_box li h4 {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #232526;
+  margin-right: 30px;
+  width: 200px;
+  /* background-color: red; */
+}
+.services_box li p {
+  font-weight: 500;
+  font-size: 18px;
+  color: #232526;
+  line-height: 24px;
+  margin-bottom: 0px;
+  margin: 0 30px;
+  width: 100px;
+  text-align: center;
+  /* background-color: red; */
+}
+.services_box li button {
+  background: none;
+  border: none;
+}
+.bills_edit_cta {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #194af5;
+  /* margin-right: 10px; */
+  margin-right: 30px;
+}
+.bills_delete_cta {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: #232526;
+}
+.services_box h5 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29px;
+  color: #232526;
+  margin-bottom: 20px;
+}
+.add_service_box h3 {
+  display: inline-block;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #232526;
+  margin-right: 40px;
+}
+.service_input {
+  margin: 0 20px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #a4a4a4;
+}
+.add_service_box {
+  margin-top: 50px;
+}
+.service_save_btn {
+  background: #e6ebff;
+  border-radius: 4px;
+  border: none;
+  padding: 5px 30px;
+  color: #194af5;
+  font-weight: 500;
+  margin-right: 100px;
+  margin-top: 30px;
+}
+.amount_box {
+  margin-bottom: 30px;
+}
+.amount_content div {
+  max-width: 250px;
+}
+.amount_content p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #232526;
+}
+.amount_content span {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #232526;
+}
+.total_box {
+  border-top: 1px dashed #b7b7b7;
+  padding-top: 10px;
+}
+.amount_box h2 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29px;
+  color: #232526;
+  margin-bottom: 30px;
+}
+.total_box p {
+  font-weight: 600;
+}
+.total_box span {
+  font-weight: 600;
+}
+.pay_wrapper {
+  /* padding: 30px 90px; */
+}
+.pay_wrapper h1 {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 29px;
+  color: #232526;
+  margin-bottom: 30px;
+}
+.pay_type_selector {
+  display: flex;
+}
+.pay_type_selector p {
+  margin-right: 30px;
+}
+.pay_type_selector .payment_radio_input:checked,
+.payment_radio_input:not(:checked) {
+  position: absolute;
+  left: -9999px;
+}
+.pay_type_selector .payment_radio_input:checked + label,
+.payment_radio_input:not(:checked) + label {
+  position: relative;
+  padding-left: 28px;
+  cursor: pointer;
+  line-height: 20px;
+  display: inline-block;
+  color: #666;
+  margin-right: 30px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #232526;
+}
+.pay_type_selector .payment_radio_input:checked + label:before,
+.payment_radio_input:not(:checked) + label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ddd;
+  border-radius: 100%;
+  background: #fff;
+}
+.pay_type_selector .payment_radio_input:checked + label:after,
+.payment_radio_input:not(:checked) + label:after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #194af5;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  border-radius: 100%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+.pay_type_selector .payment_radio_input:not(:checked) + label:after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+}
+.pay_type_selector .payment_radio_input:checked + label:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.bill_submit {
+  padding: 8px;
+  width: 200px;
+  background: #194af5;
+  border-radius: 4px;
+  border: none;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+  margin-top: 100px;
+}

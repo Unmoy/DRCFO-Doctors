@@ -14,11 +14,25 @@
   font-size: 20px;
   color: #000000;
 }
+.vitals_header {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 500;
+  font-size: 20px;
+  color: #000000;
+}
+.vitals_edit_cta {
+  color: #194af5;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 5px;
+}
 .prescription_container {
   padding: 50px;
 }
 .prescription_content {
   margin-bottom: 30px;
+  /* position: relative; */
 }
 .prescription_textarea {
   border-radius: 8px;
@@ -187,4 +201,106 @@ input[type="date"]::-webkit-inner-spin-button {
 .manufacturer {
   color: #194af5;
   font-size: 12px;
+}
+/* Chips for input */
+.tags-input {
+  width: 95%;
+  flex-wrap: wrap;
+  display: flex;
+  align-items: start;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 4px;
+  min-height: 150px;
+  cursor: text;
+}
+.tags-input:focus-within {
+  border: 1px solid #194af5;
+}
+.tags-input .complain_textarea {
+  border: none;
+  font-size: 14px;
+  padding-top: 10px;
+  resize: none;
+  white-space: nowrap;
+}
+.complain_textarea::-webkit-scrollbar {
+  display: none;
+}
+.tags-input .complain_textarea:focus {
+  outline: none;
+}
+.tags-input .diagnose_textarea {
+  border: none;
+  font-size: 14px;
+  padding-top: 10px;
+  resize: none;
+  white-space: nowrap;
+}
+.tags-input .diagnose_textarea:focus {
+  outline: none;
+}
+.diagnose_textarea::-webkit-scrollbar {
+  display: none;
+}
+.tags-input .treatment_textarea {
+  border: none;
+  font-size: 14px;
+  padding-top: 10px;
+  resize: none;
+  white-space: nowrap;
+}
+.tags-input .treatment_textarea:focus {
+  outline: none;
+}
+.treatment_textarea::-webkit-scrollbar {
+  display: none;
+}
+#tags {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+#tags li {
+  list-style-type: none;
+}
+
+.tag {
+  max-width: 95%;
+  width: auto;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  font-size: 16px;
+  list-style: none;
+  border-radius: 6px;
+  margin: 8px;
+  background: #e6ebed;
+  border-radius: 4px;
+  color: #232526;
+}
+.tag-title {
+  margin-top: 3px;
+  cursor: default;
+}
+.tag-title:hover {
+  color: #194af5;
+}
+.tag-close-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13px;
+  height: 13px;
+  text-align: center;
+  font-size: 12px;
+  margin-left: 8px;
+  color: #fff;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+  margin-bottom: -2px;
 }

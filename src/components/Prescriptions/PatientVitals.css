@@ -1,0 +1,26 @@
+.PatientVitals {
+  width: 95%;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 20px;
+  margin: 20px 0;
+}
+.vitals_box h1 {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #b7b7b7;
+}
+.vitals_box p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 29px;
+  letter-spacing: 0.02em;
+  color: #232526;
+}
+.vitals_box div {
+  width: 15em;
+  /* background-color: red; */
+  margin: 5px;
+}

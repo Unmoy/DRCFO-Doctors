@@ -8,12 +8,13 @@ const ClickOutHandler = require("react-onclickout");
 const AppointmentListForm = () => {
   const [confirmedData, setConfirmedData] = useState([]);
   const [filteredConfirmedData, setFilteredConfirmedData] = useState([]);
+  console.log(filteredConfirmedData);
   const id = localStorage.getItem("doctor_id");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [datefrom, setDateFrom] = useState("");
   const [dateto, setDateTo] = useState("");
-  console.log(datefrom, dateto);
+  // console.log(datefrom, dateto);
   var gsDayNames = [
     " ",
     "January",
@@ -167,7 +168,7 @@ const AppointmentListForm = () => {
               endDate={endDate}
               selectsRange
               inline
-              calendarClassName="calender_range"
+              calendarClassName="legal_calender_range"
             />
           </ClickOutHandler>
         )}
@@ -203,26 +204,6 @@ const AppointmentListForm = () => {
 
         <button className="date_filter_btn" onClick={() => setOpen(!open)}>
           Filter By Date
-          {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth="2"
-            className={
-              !startDate && !endDate
-                ? "legal_filter_input_icon"
-                : "legal_filter_input_icon activated"
-            }
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-            />
-          </svg> */}
         </button>
         {startDate && endDate && (
           <p className="legal_reset_btn" onClick={reset}>
@@ -234,8 +215,9 @@ const AppointmentListForm = () => {
         <table className="appointment_table">
           <thead>
             <tr>
-              <th className="date_row">Date</th>
               <th className="serial_row">S.No</th>
+              <th className="date_row">Date</th>
+
               <th className="name_row">Patient's Name</th>
               <th>
                 Nature of professional services,{" "}
@@ -250,8 +232,8 @@ const AppointmentListForm = () => {
           <tbody>
             {filteredConfirmedData.map((item, index) => (
               <tr key={item._id}>
-                <td>{item?.slot?.date}</td>
                 <td className="text-center">{index + 1}</td>
+                <td>{item?.slot?.date}</td>
                 <td>{item?.detials?.name}</td>
                 <td>{item.prescription.generalAdvice}</td>
                 <td>{item?.fees}</td>

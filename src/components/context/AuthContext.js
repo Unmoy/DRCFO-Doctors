@@ -79,6 +79,7 @@ export const AuthProvider = ({ children }) => {
       },
       auth
     );
+    console.log(number);
     return signInWithPhoneNumber(auth, number, recaptchaVerifier);
   }
   async function signInWithOtp(result, otp) {
@@ -135,28 +136,6 @@ export const AuthProvider = ({ children }) => {
           user_uid: user._delegate.uid,
           user_phone: user._delegate.phoneNumber,
         });
-        // fetch("https://reservefree-backend.herokuapp.com/auth/docter", {
-        //   method: "POST",
-        //   headers: {
-        //     Accept: "application/json",
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify({
-        //     uid: user._delegate.uid,
-        //     phone: user._delegate.phoneNumber,
-        //   }),
-        // })
-        //   .then((response) => response.json())
-        //   .then((data) => {
-        //     if (data.message === "SUCCESS") {
-        //       localStorage.setItem("doctor_id", data.id);
-        //       if (data.docter) {
-        //         navigate("/");
-        //       } else {
-        //         navigate("/clinicdetails");
-        //       }
-        //     }
-        //   });
       }
       setLoading(false);
     });

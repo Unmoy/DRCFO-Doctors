@@ -8,7 +8,7 @@
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.04);
 }
 .sidenav_container {
-  background-color: lightsteelblue;
+  /* background-color: lightsteelblue; */
   width: 16vw;
   height: 100vh;
 }
@@ -17,16 +17,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background-color: red; */
 }
 .sidenav_user_image {
-  height: 40px;
-  border-radius: 50%;
-  border: 1.5px solid #194af5;
+  height: 3.5em;
+  /* border-radius: 50%; */
+  /* border: 1.5px solid #194af5; */
   margin-right: 15px;
 }
 .side_brand_name {
   font-weight: 500;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 22px;
   color: #000000;
   margin-bottom: 2px;
@@ -38,7 +39,32 @@
   color: #000000;
   margin-bottom: 0;
 }
-
+.side_brand_number {
+  font-weight: 400;
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 0;
+  line-height: 30px;
+}
+.medical_history_cta {
+  background: #e6ebff;
+  border-radius: 25.5px;
+  border: none;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  color: #194af5;
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 40px;
+}
+.bottom_bar {
+  border-top: 1px solid #e6ebed;
+  margin: 20px 20px;
+}
 .sidebar_nav_item {
   padding: 10px 30px;
   display: flex;

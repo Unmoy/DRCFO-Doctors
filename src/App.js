@@ -17,6 +17,8 @@ import CreateSlot from "./components/Clinicscreen/CreateSlot";
 import CreateAppointment from "./components/CreateAppointment/CreateAppointment";
 import AppointmentListForm from "./components/AppointmentListForm/AppointmentListForm";
 import PrivateRoute from "./components/Authentication/PrivateRoute";
+import PatientBills from "./components/Prescriptions/PatientBills";
+import Analytics from "./components/Dashboard/Analytics/Analytics";
 // APP JS
 function App() {
   return (
@@ -46,6 +48,14 @@ function App() {
           element={
             <PrivateRoute>
               <Prescriptions />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/patientbills/:id"
+          element={
+            <PrivateRoute>
+              <PatientBills />
             </PrivateRoute>
           }
         />
@@ -121,7 +131,3 @@ function App() {
 }
 
 export default App;
-
-const Analytics = () => {
-  return <div className="text-center fs-5 fw-bold">Analytics</div>;
-};

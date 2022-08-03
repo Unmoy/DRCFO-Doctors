@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Notification.css";
 import SubNotificationCard from "./SubNotificationCard";
 
-const Notification = ({ item, setSearchId }) => {
+const Notification = ({ item, setSearchId, setOpen }) => {
   console.log(item);
   const today = new Date();
   let yesterday = new Date(new Date().setDate(new Date().getDate() - 1));
@@ -20,6 +20,7 @@ const Notification = ({ item, setSearchId }) => {
             note={note}
             key={index}
             setSearchId={setSearchId}
+            setOpen={setOpen}
           />
         ))}
     </div>

@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "./Appointments.css";
 import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
-
+import calenderimage from "../../../assets/images/c.png";
 function AppointmentCard({ item }) {
-  // console.log(item.booking);
+  // console.log(item.appointmentSlot);
   const date = new Date(item.appointmentSlot);
   var gsDayNames = [
     " ",
@@ -110,7 +110,6 @@ function Appointments({ change, searchText }) {
     )
       .then((response) => response.json())
       .then((data) => {
-  
         setConfirmed(data);
         setFilterConfirmedData(data);
       });
@@ -124,29 +123,35 @@ function Appointments({ change, searchText }) {
       }
     )
       .then((response) => response.json())
-      .then((data) => setConfirmed(data.reverse()));
+      .then((data) => {
+        // setConfirmed(data.reverse())
+        setConfirmed(data);
+      });
   }
   const renderCustomInput = ({ ref }) => (
     <label className="date_filter_input" ref={ref}>
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
+        width="26"
+        height="22"
+        viewBox="0 0 26 22"
         fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth="2"
+        xmlns="http://www.w3.org/2000/svg"
         className={
           selectedDay
             ? "date_filter_input_icon activated"
             : "date_filter_input_icon"
         }
       >
+        <path d="M20 18L25 9V21H6L5 18H20Z" fill="#545B74" />
         <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+          d="M25.3 2.00248V21.4592C25.129 21.7923 24.8874 22.0006 24.4775 22C18.0729 21.9961 11.6678 21.9941 5.26228 21.9941C4.75203 21.9941 4.45102 21.693 4.4497 21.1869C4.4497 20.5599 4.4497 19.9323 4.4497 19.3054V19.0611H4.14276C3.03205 19.0611 1.92068 19.0611 0.808642 19.0611C0.43437 19.0611 0.167033 18.8887 0.0515175 18.5837C-0.0639984 18.2787 0.0145524 17.9907 0.28915 17.7491C0.934203 17.1767 1.49028 16.5132 1.93938 15.78C3.62327 13.0886 4.36719 10.1262 4.44112 6.98619C4.47743 5.42335 4.44838 3.85855 4.45036 2.29441C4.45036 1.75692 4.74609 1.46564 5.29066 1.46564C6.41898 1.46564 7.54685 1.46564 8.67429 1.46564H8.94624C8.94624 1.22792 8.94624 1.02481 8.94624 0.8217C8.94624 0.329926 9.25319 -0.00445491 9.69413 0.000116702C10.1252 0.00403522 10.4248 0.334497 10.4281 0.811904C10.4281 1.02742 10.4281 1.24359 10.4281 1.45193H14.1339C14.1339 1.22792 14.1339 1.01763 14.1339 0.807985C14.1339 0.332538 14.4402 0.00142288 14.8719 0.000116702C15.3036 -0.00118947 15.6118 0.32666 15.6158 0.801454C15.6158 1.01828 15.6158 1.23445 15.6158 1.4467H19.3711C19.3711 1.20833 19.3678 0.989543 19.3711 0.769453C19.3777 0.329925 19.6839 0.00730066 20.0972 0.000116702C20.5104 -0.00706725 20.8444 0.31817 20.8523 0.7688C20.8563 0.994115 20.8523 1.22008 20.8523 1.4676H21.1414C22.1976 1.4676 23.2498 1.48262 24.3026 1.46042C24.7647 1.44866 25.102 1.57863 25.3 2.00248ZM23.8287 7.34538H5.92303C5.74876 11.0804 4.77117 14.5489 2.44171 17.5975H2.63973C8.30464 17.5975 13.9695 17.5954 19.6344 17.591C19.7601 17.5826 19.8785 17.53 19.9684 17.4428C20.6159 16.7807 21.1749 16.0393 21.6319 15.2366C22.6834 13.4282 23.3085 11.4762 23.6121 9.42024C23.7112 8.73646 23.756 8.04941 23.8287 7.34538ZM5.94019 5.8472H23.8056V2.94619H20.853C20.853 3.17085 20.853 3.38115 20.853 3.59144C20.849 4.06623 20.544 4.3967 20.1123 4.39735C19.6806 4.398 19.3744 4.06689 19.3711 3.5934C19.3711 3.37658 19.3711 3.1604 19.3711 2.95142H15.6151C15.6151 3.1911 15.6184 3.40858 15.6151 3.63063C15.6079 4.06885 15.299 4.39147 14.8851 4.39735C14.4712 4.40323 14.1412 4.07603 14.1346 3.62736C14.1313 3.40139 14.1346 3.17608 14.1346 2.94815H10.4275C10.4275 3.17542 10.4275 3.38637 10.4275 3.59732C10.4235 4.0695 10.1146 4.39996 9.68225 4.39735C9.24989 4.39474 8.94954 4.06362 8.94624 3.58752C8.94624 3.372 8.94624 3.15583 8.94624 2.94488H5.94151L5.94019 5.8472ZM23.8069 14.2224C23.7409 14.3569 23.7032 14.4333 23.6669 14.5104C22.9316 16.0706 22.0319 17.5192 20.7757 18.7313C20.6633 18.8435 20.5286 18.9315 20.3801 18.9896C20.2316 19.0477 20.0726 19.0747 19.913 19.0689C15.3518 19.062 10.7905 19.0602 6.22931 19.0637H5.94283V20.5175H23.8069V14.2224Z"
+          fill="#545B74"
         />
+        <rect x="8" y="9" width="3" height="3" fill="#545B74" />
+        <rect x="13" y="9" width="3" height="3" fill="#545B74" />
+        <rect x="18" y="9" width="3" height="3" fill="#545B74" />
+        <rect x="13" y="14" width="3" height="3" fill="#545B74" />
+        <rect x="8" y="14" width="3" height="3" fill="#545B74" />
       </svg>
       <input
         readOnly
@@ -188,7 +193,7 @@ function Appointments({ change, searchText }) {
         return val;
       }
     });
-    setConfirmed(filteredData.reverse());
+    setConfirmed(filteredData);
   };
   useEffect(() => {
     confirmedFilter();
@@ -196,6 +201,15 @@ function Appointments({ change, searchText }) {
   useEffect(() => {
     confirmedFilter();
   }, [confirmedData, searchText]);
+  // useEffect(() => {
+  //   if (confirmed.length) {
+  //     let sortedAppt = confirmed.sort(
+  //       (a, b) => new Date(b.appointmentSlot) - new Date(a.appointmentSlot)
+  //     );
+  //     setConfirmed(sortedAppt);
+  //     console.log(sortedAppt);
+  //   }
+  // }, [confirmed]);
   return (
     <div className="appointments--container">
       <div className="appointments--header">
@@ -213,28 +227,18 @@ function Appointments({ change, searchText }) {
         </span>
         {selectedDay && (
           <p className="reset_btn" onClick={reset}>
-            {/* <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="reset_svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-              clip-rule="evenodd"
-            />
-          </svg> */}
             Reset
           </p>
         )}
       </div>
       <div className="appointments--body">
-        {confirmed.map((item) => (
-          <AppointmentCard change={change} key={item._id} item={item} />
-        ))}
+        {confirmed
+          .sort(
+            (a, b) => new Date(b.appointmentSlot) - new Date(a.appointmentSlot)
+          )
+          .map((item) => (
+            <AppointmentCard change={change} key={item._id} item={item} />
+          ))}
       </div>
     </div>
   );
