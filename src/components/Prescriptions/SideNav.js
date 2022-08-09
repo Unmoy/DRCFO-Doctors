@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
 import "./SideNav.css";
 import userjpg from "../../assets/images/user.jpg";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const SideNav = ({ patient, focusName, setSection, section }) => {
-  const location = useLocation();
-  console.log(patient._id);
   const navigate = useNavigate();
   const navigatetobills = () => {
     navigate(`/patientbills/${patient._id}`);

@@ -64,6 +64,7 @@ const PersonalDetail = ({ setActiveStep }) => {
               {...register("name")}
               type="text"
               className="stepper_input"
+              placeholder="Enter your Full Name"
               defaultValue={currentUser.user_name ? currentUser.user_name : ""}
             />
           </div>
@@ -74,6 +75,7 @@ const PersonalDetail = ({ setActiveStep }) => {
               {...register("phone")}
               type="text"
               className="stepper_input "
+              placeholder="Enter your Phone Number"
               defaultValue={
                 currentUser.user_phone ? currentUser.user_phone : ""
               }
@@ -87,6 +89,7 @@ const PersonalDetail = ({ setActiveStep }) => {
               {...register("email")}
               type="text"
               name="email"
+              placeholder="Enter your Email ID"
               className="stepper_input"
               defaultValue={
                 currentUser.user_email ? currentUser.user_email : ""
@@ -98,6 +101,7 @@ const PersonalDetail = ({ setActiveStep }) => {
             <label htmlFor="education">Education</label>
             <img src={eduLogo} alt="" className="input_icon_clinic" />
             <input
+              placeholder="Enter your Education deatils"
               {...register("education")}
               type="text"
               name="education"
@@ -108,6 +112,14 @@ const PersonalDetail = ({ setActiveStep }) => {
             <label htmlFor="specialities">Add Specialities*</label>
             <img src={specialLogo} alt="" className="input_icon_clinic_auto" />
             <Autocomplete
+              sx={{
+                background: "#fff",
+                // width: "50%",
+                paddingLeft: "30px",
+                marginBottom: "30px",
+                border: "1px solid",
+                borderRadius: "4px",
+              }}
               onChange={(e, value) => setSpecialitites(value)}
               multiple
               id="tags-standard"
@@ -117,7 +129,13 @@ const PersonalDetail = ({ setActiveStep }) => {
                 <TextField
                   {...params}
                   variant="standard"
-                  className="speciality_input"
+                  placeholder="Type to add Specialities"
+                  sx={{
+                    paddingLeft: "10px",
+                    // background: "#fff",
+                    // borderBottom: "none",
+                  }}
+                  // className="speciality_input"
                 />
               )}
             />

@@ -63,12 +63,16 @@ function RequestCard({ item, handleLoading, searchId }) {
       <div className="request--card--profile">{initials}</div>
       <div className="request--card--detials">
         <span className="request--card--name">{item.detials.name}</span>
-        <span className="request--card--age">{item.detials.age} </span>
-        <span className="request--card--gender">{item.detials.gender}</span>
+        {/* <span className="request--card--age">
+          {" "}
+          {item.detials.age < 10
+            ? `0${item.detials.age}`
+            : item.detials.age}{" "}
+        </span> */}
+        {/* <span className="request--card--gender">{item.detials.gender}</span> */}
         <span className="request--card--date">
-          {day > 10 ? day : `0${day}`} {monthName.substring(0, 3)}{" "}
+          {monthName.substring(0, 3)} {day >= 10 ? day : `0${day}`}
         </span>
-        &bull;
         <span className="request--card--time">{item.slot.time}</span>
       </div>
       <div className="requests--card--buttons">

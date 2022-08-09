@@ -183,7 +183,7 @@ function DashboardNav({ setSearchText, setSearchId }) {
             fill="#545B74"
           />
         </svg>
-        {view && <div className="counter">{notifications.length}</div>}
+        {view ? <div className="counter">{notifications.length}</div> : null}
         {/* <img src={bellicon} alt="messages" className="header--icon" /> */}
         {open && (
           <ClickOutHandler onClickOut={clickOut}>

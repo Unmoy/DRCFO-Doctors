@@ -1,0 +1,29 @@
+.consultation_carousel {
+  background: #fff;
+  padding: 20px;
+  margin: 0 auto;
+  width: 700px;
+  height: 500px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+.consultation_carousel h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 39px;
+  text-align: center;
+  color: #232526;
+  margin-bottom: 20px;
+}
+.consultation_carousel p {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  text-align: center;
+  color: #000000;
+  max-width: 500px;
+  margin: auto;
+}
+.carousel_wrapper img {
+  max-width: 200px;
+}

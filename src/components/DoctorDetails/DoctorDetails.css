@@ -12,11 +12,72 @@
   border-radius: 10px;
   margin-right: 10px;
   width: 90px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.doctor_image_choose img {
+.upload_pic_input {
+}
+.wrapper {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  position: relative;
+}
+
+.file-upload {
+  height: 110px;
+  width: 110px;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #000;
+  overflow: hidden;
+  margin-right: 20px;
+}
+.loader {
+  border: 3px solid #f3f3f3; /* Light grey */
+  border-top: 3px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: -5px;
+  right: 10px;
+  z-index: 99;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.file-upload input {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+  /* background-color: red; */
+}
+.upload_svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.wrapper img {
   max-width: 100%;
 }
 .doctor_image_content {
@@ -32,6 +93,13 @@
   margin-right: 20px;
   border-radius: 4px;
   color: #194af5;
+}
+.image_upload_cta.loader_true {
+  background: #194af5;
+  color: #fff;
+}
+.image_upload_cta:active {
+  transform: scale(0.99);
 }
 .image_delete_cta {
   background: #fff;

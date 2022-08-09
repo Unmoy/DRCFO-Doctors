@@ -30,6 +30,13 @@
   padding: 20px;
   width: 450px;
 }
+.input_icons input::placeholder {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #7d818b;
+}
 .stepper_input {
   padding: 7px;
   border: 1px solid #a4a4a4;
@@ -56,13 +63,8 @@
   letter-spacing: 0.02em;
   color: #232526;
 }
-.css-1x51dt5-MuiInputBase-input-MuiInput-input {
-  background-color: #fff !important;
-  /* padding: 8px 20px !important;
-  text-indent: 20px; */
-}
-.css-iqd1hh-MuiButtonBase-root-MuiChip-root:first-child {
-  margin-left: 40px !important;
+.css-1a1fmpi-MuiInputBase-root-MuiInput-root:after {
+  /* border-bottom: none !important; */
 }
 .speciality_input {
   margin-bottom: 30px !important;
@@ -79,17 +81,4 @@
   z-index: 100;
   width: 44px !important;
   margin-right: 20px !important;
-}
-
-.css-wb57ya-MuiFormControl-root-MuiTextField-root {
-  border: 1px solid #a4a4a4 !important;
-}
-.css-1a1fmpi-MuiInputBase-root-MuiInput-root:before {
-  display: none !important;
-}
-.MuiAutocomplete-hasPopupIcon.css-16awh2u-MuiAutocomplete-root
-  .MuiAutocomplete-inputRoot,
-.MuiAutocomplete-hasClearIcon.css-16awh2u-MuiAutocomplete-root
-  .MuiAutocomplete-inputRoot {
-  padding: 0px 40px;
 }

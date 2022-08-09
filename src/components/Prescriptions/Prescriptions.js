@@ -41,14 +41,17 @@ const Prescriptions = () => {
   const diagnosisref = useRef(null);
   const treatmentref = useRef(null);
   const testref = useRef(null);
-  // const dateref = useRef(null);
   const adviceref = useRef(null);
   const drugNameref = useRef(null);
   const [section, setSection] = useState("");
   const [drugName, setDrugName] = useState("");
   const [drugSetIndex, setDrugSetIndex] = useState(null);
   const [vitalsData, setVitalsData] = useState({});
-  // console.log(vitalsData);
+  const [complaintags, setComplainTags] = useState([]);
+  const [diagnosetags, setDiagnoseTags] = useState([]);
+  const [treatmenttags, setTreatmentTags] = useState([]);
+  const [advicetags, setAdviceTags] = useState([]);
+  console.log(advicetags);
   function openModal() {
     setIsOpen(true);
   }
@@ -137,18 +140,6 @@ const Prescriptions = () => {
     );
     setTestList(updatedTestList);
   };
-  // const handleComplain = (e) => {
-  //   e.preventDefault();
-  //   setComplain(e.target.value);
-  // };
-  const handleTreatment = (e) => {
-    e.preventDefault();
-    setTreatment(e.target.value);
-  };
-  const handleDiagnosis = (e) => {
-    e.preventDefault();
-    setDiagnosis(e.target.value);
-  };
 
   const handleAdvice = (e) => {
     e.preventDefault();
@@ -161,17 +152,19 @@ const Prescriptions = () => {
 
     const precriptionData = {
       id,
-      complain: complain,
-      treatment: treatment,
+      complain: complaintags,
+      treatment: treatmenttags,
       test: testList,
       drug: drugList,
-      diagnosis: diagnosis,
+      diagnosis: diagnosetags,
       followUpdate: followup,
-      generalAdvice: advice,
+      generalAdvice: advicetags,
       template: saveTemplate,
       docterId: docterId,
+      vitals: vitalsData,
     };
     setDisable(true);
+    console.log(precriptionData);
     fetch("https://reservefree-backend.herokuapp.com/add/prescription", {
       method: "POST",
       headers: {
@@ -183,7 +176,10 @@ const Prescriptions = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        openModal();
+
+        if (data.message == "SUCCESS") {
+          openModal();
+        }
       });
   };
   const loadTemplate = (id) => {
@@ -245,9 +241,6 @@ const Prescriptions = () => {
       adviceref.current.focus();
     }
   }, [section]);
-  const [complaintags, setComplainTags] = React.useState([]);
-  const [diagnosetags, setDiagnoseTags] = React.useState([]);
-  const [treatmenttags, setTreatmentTags] = React.useState([]);
 
   const removeDiagnoseTags = (indexToRemove) => {
     setDiagnoseTags([
@@ -256,7 +249,8 @@ const Prescriptions = () => {
   };
   const addDiagnoseTags = (event) => {
     if (event.code == "Enter" && event.target.value.length > 1) {
-      setDiagnoseTags([...diagnosetags, event.target.value]);
+      let text = event.target.value.replace(/[\r\n]/gm, "");
+      setDiagnoseTags([...diagnosetags, text]);
       event.target.value = "";
     }
   };
@@ -285,6 +279,43 @@ const Prescriptions = () => {
       diagnosisref.current.focus();
     }
   };
+  const removeAdviceTags = (indexToRemove) => {
+    setAdviceTags([
+      ...advicetags.filter((_, index) => index !== indexToRemove),
+    ]);
+  };
+  const addAdviceTags = (event) => {
+    if (event.code == "Enter" && event.target.value.length > 1) {
+      let text = event.target.value.replace(/[\r\n]/gm, "");
+      setAdviceTags([...advicetags, text]);
+      event.target.value = "";
+    }
+  };
+  const updateAdviceTagsHandler = (e) => {
+    if (advicetags.length > 0 && e.target.value == "") {
+      const copyOfTags = [...advicetags];
+      copyOfTags.pop();
+      setAdviceTags(copyOfTags);
+    } else {
+      // console.log("coreect nedded");
+    }
+  };
+  const getAdviceTagData = (i, tag) => {
+    let text = tag.replace(/[\r\n]/gm, "");
+    console.log(text);
+    const copyOfTags = [...advicetags.filter((_, index) => index !== i)];
+    setAdviceTags(copyOfTags);
+    // console.log(copyOfTags);
+    if (adviceref.current) {
+      adviceref.current.value = text;
+      adviceref.current.focus();
+    }
+  };
+  const setAdviceFocus = () => {
+    if (adviceref.current) {
+      adviceref.current.focus();
+    }
+  };
   const removeTreatmentTags = (indexToRemove) => {
     setTreatmentTags([
       ...treatmenttags.filter((_, index) => index !== indexToRemove),
@@ -292,7 +323,8 @@ const Prescriptions = () => {
   };
   const addTreatmentTags = (event) => {
     if (event.code == "Enter" && event.target.value.length > 1) {
-      setTreatmentTags([...treatmenttags, event.target.value]);
+      let text = event.target.value.replace(/[\r\n]/gm, "");
+      setTreatmentTags([...treatmenttags, text]);
       event.target.value = "";
     }
   };
@@ -330,7 +362,8 @@ const Prescriptions = () => {
   const addTags = (event) => {
     // console.log(event.target.value.length);
     if (event.code == "Enter" && event.target.value.length > 1) {
-      setComplainTags([...complaintags, event.target.value]);
+      let text = event.target.value.replace(/[\r\n]/gm, "");
+      setComplainTags([...complaintags, text]);
       event.target.value = "";
     }
   };
@@ -450,7 +483,6 @@ const Prescriptions = () => {
                         onKeyDown={(e) =>
                           e.code == "Backspace" ? updateTagsHandler(e) : null
                         }
-                        required
                         onFocus={handleFocus}
                         ref={complainref}
                       ></textarea>
@@ -752,17 +784,65 @@ const Prescriptions = () => {
               </div>
               <div className="prescription_content" id="advice">
                 <label htmlFor="advice">General advice</label>
-                <textarea
+                <div className="tags-input" onClick={setAdviceFocus}>
+                  <ul id="tags">
+                    {advicetags.map((tag, index) => (
+                      <li key={index} className="tag">
+                        <span
+                          className="tag-title"
+                          onClick={() => getAdviceTagData(index, tag)}
+                        >
+                          {tag}
+                        </span>
+                        <span
+                          className="tag-close-icon"
+                          onClick={() => removeAdviceTags(index)}
+                        >
+                          <svg
+                            width="13"
+                            height="13"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </span>
+                      </li>
+                    ))}
+                    <li>
+                      <textarea
+                        id="date"
+                        name="advice"
+                        cols="50"
+                        rows="1"
+                        className="advice_textarea"
+                        onKeyUp={(event) =>
+                          event.code == "Enter" ? addAdviceTags(event) : null
+                        }
+                        onKeyDown={(e) =>
+                          e.code == "Backspace"
+                            ? updateAdviceTagsHandler(e)
+                            : null
+                        }
+                        onFocus={handleFocus}
+                        ref={adviceref}
+                      ></textarea>
+                    </li>
+                  </ul>
+                </div>
+                {/* <textarea
                   onFocus={handleFocus}
                   id="date"
                   name="advice"
                   cols="120"
                   rows="7"
-                  className="prescription_textarea"
-                  onChange={handleAdvice}
-                  value={advice}
+                  className="advice_textarea"
                   ref={adviceref}
-                ></textarea>
+                ></textarea> */}
               </div>
               <div className="d-flex justify-content-end me-5">
                 <button

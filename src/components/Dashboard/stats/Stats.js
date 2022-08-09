@@ -82,7 +82,6 @@ function Stats() {
         <span className="stat--text">
           <span className="stat--heading">Yesterday's No-show</span>
           <span className="stat--value">
-            {stats?.patients?.noShow}
             {stats?.patients ? (
               stats?.patients?.noShow
             ) : (

@@ -41,8 +41,9 @@
 
 .user--icon {
   height: 40px;
+  width: 40px;
   margin: 4px 0 0 16px;
-  border-radius: 50%;
+  border-radius: 100%;
   border: 1.5px solid #194af5;
   cursor: pointer;
   /* padding: 20px; */

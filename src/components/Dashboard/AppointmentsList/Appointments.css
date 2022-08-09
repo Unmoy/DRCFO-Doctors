@@ -26,13 +26,22 @@
 
 .appointments--viewall {
 }
+.appointment--card--gender {
+  display: inline-block;
+  width: 50px;
+  margin-right: 5px;
+  /* background-color: red; */
+}
+.appointment--card--age {
+  display: inline-block;
+  margin-right: 5px;
+}
 .appointment--card--gender,
 .appointment--card--age {
   font-size: 14px;
 }
 .appointment--card--date {
   display: inline-block;
-  margin-left: 10px;
 }
 .appointments--body {
   padding: 0 1em;
@@ -70,10 +79,8 @@
 
 .appointment--card--time {
   padding-left: 1em;
-  /* display: table-cell; */
   font-weight: 400;
   font-size: 14px;
-  /* line-height: 22px; */
   color: #5a6472;
   margin: 0 20px;
 }

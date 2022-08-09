@@ -19,6 +19,8 @@ import AppointmentListForm from "./components/AppointmentListForm/AppointmentLis
 import PrivateRoute from "./components/Authentication/PrivateRoute";
 import PatientBills from "./components/Prescriptions/PatientBills";
 import Analytics from "./components/Dashboard/Analytics/Analytics";
+import Consultation from "./components/Consultation/Consultation";
+import Finance from "./components/Dashboard/Finance/Finance";
 // APP JS
 function App() {
   return (
@@ -26,7 +28,7 @@ function App() {
       <Routes>
         {/* Dashboard Routes */}
         <Route
-          path="/*"
+          path="/"
           element={
             <PrivateRoute>
               <Dashboard />
@@ -35,6 +37,8 @@ function App() {
         >
           <Route index element={<Monitor />} />
           <Route path="monitor" element={<Monitor />} />
+          <Route path="consultation" element={<Consultation />} />
+          <Route path="finance" element={<Finance />} />
           <Route path="clinicscreen" element={<Clinicscreen />} />
           <Route path="patient" element={<PatientScreen />} />
           <Route path="analytics" element={<Analytics />} />

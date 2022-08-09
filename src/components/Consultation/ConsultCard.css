@@ -1,0 +1,47 @@
+.ConsultCard {
+  padding: 10px 40px;
+  margin: 0 50px 30px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e1e3fb;
+  border-radius: 8px;
+}
+.ConsultCard h2 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  color: #232526;
+  margin-bottom: 5px;
+}
+.ConsultCard p {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  text-align: justify;
+  color: #000000;
+  margin-bottom: 0;
+}
+.start_consult_cta {
+  background: #194af5;
+  border-radius: 4px;
+  border: none;
+  width: 200px;
+  padding: 6px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  margin-right: 80px;
+}
+.close_consult_panel {
+  background: none;
+  border-radius: 100%;
+  padding: 0;
+  height: 30px;
+  width: 30px;
+}
+.close_consult_panel svg {
+  margin-bottom: 2px;
+}

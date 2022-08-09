@@ -9,8 +9,8 @@
 }
 
 .sidemenu_brand {
-  border: 1px solid #f8f8f8;
-  height: 25vh;
+  height: 20vh;
+  background-color: #194af5;
   background: linear-gradient(
     136.9deg,
     #eef7ff 20%,
@@ -24,10 +24,11 @@
   display: block;
   margin-top: 20px;
   cursor: pointer;
+  width: 100px;
 }
 
 .sidebar_menu_item {
-  padding: 10px 30px;
+  padding: 10px 15px 10px 30px;
   display: flex;
   align-items: center;
   width: 90%;
@@ -49,7 +50,12 @@
   font-size: 18px;
   line-height: 27px;
 }
-
+/* .menu--text.large {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: -0.9px;
+} */
 .sidebar_menu_item:hover {
   color: #194af5;
   background: #e6ebff;

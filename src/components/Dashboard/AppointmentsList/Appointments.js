@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import "./Appointments.css";
 import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 import DatePicker from "@hassanmojab/react-modern-calendar-datepicker";
-import calenderimage from "../../../assets/images/c.png";
 function AppointmentCard({ item }) {
-  // console.log(item.appointmentSlot);
+  console.log(item.detials.phone);
   const date = new Date(item.appointmentSlot);
   var gsDayNames = [
     " ",
@@ -25,7 +24,6 @@ function AppointmentCard({ item }) {
   const day = date.getDate();
   const month = date.getMonth() + 1;
   var monthName = gsDayNames[month];
-  const year = date.getFullYear();
   // console.log(day, monthName, year);
   const navigate = useNavigate();
   const handlePrescriptions = () => {
@@ -41,13 +39,16 @@ function AppointmentCard({ item }) {
         <span className="appointment--card--name" id="fixed">
           {item.detials.name}
         </span>
-        <span className="appointment--card--age">{item.detials.age} </span>
-        <span className="appointment--card--gender">{item.detials.gender}</span>
+        {/* <span className="appointment--card--age">
+          {item.detials.age < 10 ? `0${item.detials.age}` : item.detials.age}{" "}
+        </span> */}
+        {/* <span className="appointment--card--gender">{item.detials.gender}</span> */}
         <span className="appointment--card--date">
-          {day > 10 ? day : `0${day}`} {monthName.substring(0, 3)}
+          {monthName.substring(0, 3)} {day >= 10 ? day : `0${day}`}
         </span>
+        <span className="request--card--time">{displayTime}</span>
       </div>
-      <span className="appointment--card--time">{displayTime}</span>
+      <span className="appointment--card--time">{item.detials.phone}</span>
       {item?.booking === "Walk-in" ? (
         <span className="appointment--card--location_walkin">
           {item?.booking}

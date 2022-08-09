@@ -34,16 +34,20 @@ const AddVitals = ({
   vitalsData,
   patient,
 }) => {
-  console.log(patient);
+  // console.log(patient);
   // const [vitalsValues, setvitalsValue] = useState({});
   // console.log(vitalsData);
   const submitVitals = (e) => {
     e.preventDefault();
-    console.log("data");
+    // console.log("data");
     setIsOpen(false);
   };
   const InputHandle = (e) => {
     setVitalsData({ ...vitalsData, [e.target.name]: e.target.value });
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
   };
   return (
     <div className="">
@@ -51,6 +55,7 @@ const AddVitals = ({
         isOpen={modalIsOpen}
         style={customStyles}
         contentLabel="Example Modal"
+        onRequestClose={closeModal}
       >
         <form onSubmit={submitVitals} autoComplete="off">
           <div className="vital_modal">

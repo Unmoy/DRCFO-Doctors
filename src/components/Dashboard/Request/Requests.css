@@ -56,13 +56,22 @@
   padding: 0 1em;
   overflow-x: hidden;
 }
+/* .request--card--gender {
+  display: inline-block;
+  width: 50px;
+
+} */
+/* .request--card--age {
+  display: inline-block;
+  margin-right: 5px;
+}
 .request--card--gender,
 .request--card--age {
   font-size: 14px;
-}
+} */
 .request--card--date {
   display: inline-block;
-  margin-left: 10px;
+  /* margin-right: 10px; */
 }
 .request--card {
   width: 100%;
@@ -138,7 +147,7 @@
   background: #e6ebff;
   border-radius: 13px;
   padding: 5px 8px;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 .date_filter_input {
   position: relative;

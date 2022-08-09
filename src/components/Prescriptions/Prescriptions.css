@@ -256,6 +256,19 @@ input[type="date"]::-webkit-inner-spin-button {
 .treatment_textarea::-webkit-scrollbar {
   display: none;
 }
+.tags-input .advice_textarea {
+  border: none;
+  font-size: 14px;
+  padding-top: 10px;
+  resize: none;
+  white-space: nowrap;
+}
+.tags-input .advice_textarea:focus {
+  outline: none;
+}
+.advice_textarea::-webkit-scrollbar {
+  display: none;
+}
 #tags {
   display: flex;
   flex-wrap: wrap;

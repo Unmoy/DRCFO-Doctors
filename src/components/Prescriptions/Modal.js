@@ -40,7 +40,7 @@ const ConfirmModal = ({ modalIsOpen }) => {
             <SuccessAnimation />
             <h1 style={modalH1}>Prescrition Generated Succesfully</h1>
           </div>
-          <Link to="/dashboard">
+          <Link to="/">
             <button style={modalButton}>Go to dashboard</button>
           </Link>
         </div>

@@ -26,13 +26,15 @@ const Topbar = ({
       .then((data) => {
         setDefaultTemplate(data);
       });
-    fetch(
-      `https://reservefree-backend.herokuapp.com/get/prescription-template?docterId=${docterId}&display=title`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setDoctorTemplate(data);
-      });
+    if (docterId) {
+      fetch(
+        `https://reservefree-backend.herokuapp.com/get/prescription-template?docterId=${docterId}&display=title`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setDoctorTemplate(data);
+        });
+    }
   }, [docterId]);
   const openPrescription = (id) => {
     loadTemplate(id);
